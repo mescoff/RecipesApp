@@ -1,6 +1,6 @@
 export interface IRecipe {
   // Will generate those myself
-  id?: number;
+  id?: string;
   titleShort: string;
   titleLong?: string;
   description: string;
@@ -12,6 +12,21 @@ export interface IRecipe {
   medias: IMedia[];
   instructions: IInstruction[];
   categories: ICategory[];
+}
+
+
+export const defaultRecipe: IRecipe = {
+   
+  titleShort: "",
+  description: "",
+  originalLink: "",
+  lastModifier: "",
+  auditDate:  new Date(Date.now()),
+  creationDate: new Date(Date.now()),
+  ingredients: [],
+  medias: [],
+  instructions: [],
+  categories: [],
 }
 
 export interface IIngredient {

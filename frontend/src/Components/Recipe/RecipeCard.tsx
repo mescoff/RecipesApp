@@ -9,11 +9,12 @@ import {
   Box,
   CardActionArea,
   makeStyles,
-  Theme,
   createStyles
-} from "../../../node_modules/@material-ui/core";
+} from "@material-ui/core";
 import { IRecipe } from "../../Interfaces/recipe.interface";
-import { IManageRecipeProps } from "./ManageRecipe";
+import { IManageRecipeProps } from "./ManageRecipeCard";
+import { Link } from "@reach/router";
+import { useLocation } from "react-router";
 
 // export interface IRecipe {
 //     img_link: string;
@@ -36,35 +37,40 @@ import { IManageRecipeProps } from "./ManageRecipe";
 //     description
 // });
 
+export interface IRecipeCardProps {
+  recipe: IRecipe;
+}
 
-
-const Recipe = (props: IRecipe & IManageRecipeProps) => {
-  const { medias, titleShort, description } = props;
+const RecipeCard = (props: IRecipeCardProps & IManageRecipeProps) => {
+  const { id, medias, titleShort, description } = props.recipe;
   const classes = useStyles();
+  const location = useLocation();
   return (
     <Box width="20%" height="20%">
-      <Card
-        className="recipe-card"
-        onClick={props.onClicked}
-        // onMouseOut={props.onHover}
-      >
-        <CardActionArea>
-          <CardMedia
-            className={classes.picture}
-            image={medias[0].mediaPath}
-            title={titleShort}
-          />
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h3">
-              {titleShort}
-            </Typography>
-            <Typography variant="body2" component="p">
-              {description}
-            </Typography>
-            {/* <IngredientsTable /> */}
-          </CardContent>
-        </CardActionArea>
-      </Card>
+      <Link to={`${location.pathname}/${id}`} style={{ textDecoration: "none" }}>
+        <Box m={2}>
+          <Card
+          // onMouseOut={props.onHover}
+          >
+            {/* <CardActionArea> */}
+            <CardMedia
+              className={classes.picture}
+              image={medias[0].mediaPath}
+              title={titleShort}
+            />
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="h3">
+                {titleShort}
+              </Typography>
+              <Typography variant="body2" component="p">
+                {description}
+              </Typography>
+              {/* <IngredientsTable /> */}
+            </CardContent>
+            {/* </CardActionArea> */}
+          </Card>
+        </Box>
+      </Link>
     </Box>
   );
 };
@@ -96,4 +102,4 @@ const useStyles = makeStyles(() =>
 //   recipe: PropTypes.object.isRequired,
 // };
 
-export default Recipe;
+export default RecipeCard;

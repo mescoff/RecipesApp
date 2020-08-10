@@ -1,25 +1,25 @@
 import React, { useState } from "react";
 import { IRecipe } from "../../Interfaces/recipe.interface";
 import { logInfo } from "../../tools/functions";
-import Recipe from "./Recipe";
-import { RecipeLarger } from "./RecipeLarger";
 import { Grow } from "@material-ui/core";
+import { RecipeLarger } from "./RecipeCardLarger";
+import RecipeCard from "./RecipeCard";
 
 export interface IManageRecipeProps {
-  onClicked: () => void;
+  onHover: (recipe:IRecipe) => void;
 }
 
-export const ManageRecipe = (props: IRecipe) => {
+
+export const ManageRecipeCard: React.FC<IRecipe> = (props) => {
   const logger = "ManageRecipe";
   const [showSmall, setShowSmall] = useState<boolean>(true);
 
-  const handleClick = () => {
+  /// TODO: use 
+  const handleHover = (recipe:IRecipe) => {
     logInfo(logger, `${props.id}: showSmall = ${!showSmall}`);
-
-    setShowSmall(prev => !prev);
+    // setShowSmall(prev => !prev); 
   };
 
-  //   return clicked === false ? (
   return (
     showSmall ? 
       <Grow
@@ -28,7 +28,7 @@ export const ManageRecipe = (props: IRecipe) => {
         style={{ transformOrigin: "0 0 0" }}
         {...(showSmall ? { timeout: {enter: 1500, exit: 750} } : {})}
       >
-        <Recipe onClicked={handleClick} {...props} />
+        <RecipeCard onHover={handleHover} recipe={props} />
       </Grow>
       :
       <Grow
@@ -36,7 +36,7 @@ export const ManageRecipe = (props: IRecipe) => {
         style={{ transformOrigin: "0 0 0" }}
         {...(!showSmall ? { timeout: {enter: 1500, exit: 750} } : {})}
       >
-        <RecipeLarger onClicked={handleClick} {...props} />
+        <RecipeLarger onHover={handleHover} recipe={props} />
       </Grow>
     
   );

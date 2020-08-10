@@ -11,8 +11,8 @@ import {
   Divider
 } from "@material-ui/core";
 import IngredientsTable from "../RecipeUtils/IngredientsTable";
-import { IRecipe } from "../../Interfaces/recipe.interface";
-import { IManageRecipeProps } from "./ManageRecipe";
+import { IManageRecipeProps } from "./ManageRecipeCard";
+import { IRecipeCardProps } from "./RecipeCard";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -30,7 +30,6 @@ const useStyles = makeStyles((theme: Theme) =>
       flex: "1 0 auto"
     },
     picture: {
-      // width: 151
       height: "100%",
       width: "100%"
     }
@@ -47,14 +46,13 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-// width: "30vw",
 
-export const RecipeLarger = (props: IRecipe & IManageRecipeProps ) => {
+export const RecipeLarger = (props: IRecipeCardProps & IManageRecipeProps ) => {
   const classes = useStyles();
-  const { medias, titleShort, description } = props;
+  const { medias, titleShort, description } = props.recipe;
   return (
     <Box width="50%" height="60%">
-      <Card className={classes.root} onClick={props.onClicked}>
+      <Card className={classes.root} onClick={() => props.onHover(props.recipe)}>
         <CardMedia
           // className="media"
           className={classes.picture}

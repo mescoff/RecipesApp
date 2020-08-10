@@ -1,0 +1,68 @@
+import React, { useState, useEffect, useContext } from "react";
+import { IRecipe, defaultRecipe } from "../../Interfaces/recipe.interface";
+import { Typography, Box, Modal } from "@material-ui/core";
+import { RouteComponentProps } from "@reach/router";
+import { logInfo } from "../../tools/functions";
+import { RecipesContext, IRecipesContext } from "../../Contexts/RecipesContext";
+import CustomModal from "../common/CustomModal";
+
+interface RecipePageProps extends RouteComponentProps {
+  recipeId?: string;
+}
+
+const RecipePage: React.FC<RecipePageProps> = props => {
+  const logger = "RecipePage";
+  const [recipe, setRecipe] = useState<IRecipe>({ ...defaultRecipe });
+  const [error, setError] = useState<string>("");
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const recipeContext = useContext<IRecipesContext>(RecipesContext);
+
+  useEffect(() => {
+    if (props.recipeId && recipeContext.recipes.length > 0) {
+      logInfo(logger, "Looking for recipe");
+      const rec = getCourseById(recipeContext.recipes, props.recipeId) || null;
+      if (rec === null) {
+        setError("Recipe not found");
+        setIsModalOpen(true);
+      } else {
+        setRecipe(rec);
+      }
+    }
+  });
+
+  const handleToggle = () => {
+    // setIsModalOpen( prev => {
+    //     return !prev;
+    // })
+    logInfo(logger, `Setting modal isOpen: ${!isModalOpen}`);
+    setIsModalOpen(!isModalOpen);
+  };
+
+  // TODO: If no recipeId this should be blank and ready to create recipe
+  logInfo(logger, "Rendering");
+  return (
+    <>
+      <Box display="flex" justifyContent="center" mt={5}>
+        <Typography variant="h5" component="h6">
+          {recipe.titleShort}
+        </Typography>
+      </Box>
+      <CustomModal
+        title="Oops"
+        description={error}
+        isOpen={isModalOpen}
+        handleToggle={handleToggle}
+        redirectLink={"/"}
+      />
+    </>
+  );
+};
+
+export const getCourseById = (
+  recipes: IRecipe[],
+  recipeId: string
+): IRecipe | null => {
+  return recipes.find(recipe => recipe.id === recipeId) || null;
+};
+
+export default RecipePage;

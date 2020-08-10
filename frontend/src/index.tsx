@@ -4,6 +4,8 @@ import "./index.css";
 import App from "./Components/App/App";
 import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
+import './fonts/DeliveryNote.otf'
+import './fonts/HimawariScript.otf'
 
 ReactDOM.render(
   <BrowserRouter>
