@@ -10,6 +10,10 @@ interface RecipePageProps extends RouteComponentProps {
   recipeId?: string;
 }
 
+/**
+ * Recipe page : view Recipe details or setup new recipe
+ * @param props 
+ */
 const RecipePage: React.FC<RecipePageProps> = props => {
   const logger = "RecipePage";
   const [recipe, setRecipe] = useState<IRecipe>({ ...defaultRecipe });
@@ -57,6 +61,10 @@ const RecipePage: React.FC<RecipePageProps> = props => {
     </>
   );
 };
+
+// RecipePage.propTypes = {
+//     recipeId?: 
+// }
 
 export const getCourseById = (
   recipes: IRecipe[],
