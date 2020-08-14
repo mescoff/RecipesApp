@@ -1,4 +1,4 @@
-import { ICategory, IUnit, IRecipe, IIngredient, IMedia, IInstruction } from "../Interfaces/recipe.interface";
+import { ICategory, IUnit, IRecipe, IIngredient, IMedia, IInstruction, TimeIntervalLabel, TimeUnit } from "../Interfaces/recipe.interface";
 const img1 =
   "https://images.unsplash.com/photo-1445847562439-f251c3799ea5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=632&q=80";
 const img2 =
@@ -22,6 +22,10 @@ export const RecipeMock1: IRecipe = {
     lastModifier: "manonsEmail",
     auditDate: new Date("2020-07-12"),
     creationDate: new Date("2020-07-12"),
+    timeIntervals: [
+      {label: TimeIntervalLabel.Prep, timeValue:30, timeUnit:TimeUnit.Minutes},
+      {label: TimeIntervalLabel.Cooking, timeValue:2, timeUnit:TimeUnit.Hours},
+    ],
     ingredients: [] as IIngredient[],
     medias: [
         {mediaPath: img1, tag: 'picture', title:'img1'},

@@ -8,10 +8,27 @@ export interface IRecipe {
   lastModifier: string;
   auditDate: Date;
   creationDate: Date;
+  timeIntervals: ITimeInterval[];
   ingredients: IIngredient[];
   medias: IMedia[];
   instructions: IInstruction[];
   categories: ICategory[];
+}
+
+export interface ITimeInterval{
+  label: TimeIntervalLabel;
+  timeValue: string;
+  timeUnit: TimeUnit;
+}
+export enum TimeIntervalLabel{
+  Prep="Prep",
+  Cooking="Cooking"
+}
+
+export enum TimeUnit {
+  Seconds = 'sec',
+  Minutes = 'min',
+  Hours = 'hours'
 }
 
 
@@ -23,6 +40,7 @@ export const defaultRecipe: IRecipe = {
   lastModifier: "",
   auditDate:  new Date(Date.now()),
   creationDate: new Date(Date.now()),
+  timeIntervals:[],
   ingredients: [],
   medias: [],
   instructions: [],

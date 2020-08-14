@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { IRecipe } from "../../Interfaces/recipe.interface";
-import { logInfo } from "../../tools/functions";
+import { logInfo } from "../../Tools/functions";
 import { Grow } from "@material-ui/core";
 import { RecipeLarger } from "./RecipeCardLarger";
 import RecipeCard from "./RecipeCard";

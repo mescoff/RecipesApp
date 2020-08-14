@@ -8,11 +8,7 @@ import { RecipesContext, IRecipesContext } from "../../Contexts/RecipesContext";
 const img1 = "https://images.unsplash.com/photo-1445847562439-f251c3799ea5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=632&q=80";
 const img2 = "https://images.unsplash.com/photo-1534939561126-855b8675edd7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80";
 
-interface IRecipeList {
-  recipes: IRecipe[];
-}
-
-const RecipeList = (props: IRecipeList) => {
+const RecipeList: React.FC<{recipes: IRecipe[]}> = (props) => {
   const recipes = props.recipes.map(recipe => (
     <ManageRecipeCard key={recipe.id} {...recipe} />
   ));
