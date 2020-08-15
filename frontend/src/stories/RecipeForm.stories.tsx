@@ -1,7 +1,7 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import ManageRecipeForm, { IRecipeFormProps } from "../Components/Recipe/ManageRecipeForm";
-import { RecipeMock1 } from "../testTools/mockData";
+import ManageRecipeForm, { IManageRecipeFormProps } from "../Components/Recipe/RecipePage/MainInformation/ManageRecipeForm";
+import { recipeMock1 } from "../testTools/mockData";
 
 export default {
     title: "Example/ManageRecipeForm",
@@ -11,11 +11,11 @@ export default {
     // },
 } as Meta;
 
-const Template: Story<IRecipeFormProps> = args => (
+const Template: Story<IManageRecipeFormProps> = args => (
     <ManageRecipeForm {...args} />
 );
 
 export const Basic = Template.bind({});
 Basic.args = {
-    recipe: RecipeMock1,
+    recipe: recipeMock1,
 }

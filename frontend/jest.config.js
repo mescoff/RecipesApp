@@ -29,24 +29,33 @@ module.exports = {
     modulePaths:[
         "<rootDir>"
     ],
+
     // Root of source code
     // <rootDir> will be substituted by jest
-    roots: [
-        "<rootDir>/src"
-    ],
+    // DEFAULT is "<rootDir>/src"
+    // roots: [
+    //     "<rootDir>/src"
+    // ],
 
+    // snapshotSerializers: [
+    //   "enzyme-to-json/serializer"
+    // ],
     // react-script requires it to be in src/
     // setupFiles:[
     //     "<rootDir>/src/testTools/jestSetup.js"
     // ],
     // Test spec file resolution pattern
     // file should contain `test` or `spec`.
-    testRegex: "(.*|(\\.|/)(test|spec))\\.tsx?$",
+    // testRegex: "(.*|(\\.|/)(test|spec))\\.tsx?$",
 
     // Jest transformations -- this adds support for Typescript
-    // using ts-jest
-    transform: {
-        "\\.(js|jsx|ts|tsx)$":  "ts-jest"
-    },
+    // using ts-jest ///OR NOT
+    // transform: {
+    //     "\\.(js|jsx|ts|tsx)$":  "ts-jest"
+    // },
+    transformIgnorePatterns: [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
+      "^.+\\.module\\.(css|sass|scss)$"
+    ]
 
 }

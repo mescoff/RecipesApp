@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
-import { IRecipe, defaultRecipe } from "../../Interfaces/recipe.interface";
+import { IRecipe, defaultRecipe } from "../../../Interfaces/recipe.interface";
 import { Typography, Box, Modal } from "@material-ui/core";
 import { RouteComponentProps } from "@reach/router";
-import { logInfo } from "../../Tools/functions";
-import { RecipesContext, IRecipesContext } from "../../Contexts/RecipesContext";
-import CustomModal from "../common/CustomModal";
-import ManageRecipeForm from "./ManageRecipeForm";
+import { logInfo } from "../../../Tools/functions";
+import { RecipesContext, IRecipesContext } from "../../../Contexts/RecipesContext";
+import CustomModal from "../../common/CustomModal";
+import ManageRecipeForm from "./MainInformation/ManageRecipeForm";
 
 interface RecipePageProps extends RouteComponentProps {
 	recipeId?: string;

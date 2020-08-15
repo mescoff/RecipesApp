@@ -1,36 +1,46 @@
-import { ICategory, IUnit, IRecipe, IIngredient, IMedia, IInstruction, TimeIntervalLabel, TimeUnit } from "../Interfaces/recipe.interface";
+import { ICategory, IUnit, IRecipe, IIngredient, IMedia, IInstruction, TimeIntervalLabel, TimeUnit, ITimeInterval } from "../Interfaces/recipe.interface";
 const img1 =
   "https://images.unsplash.com/photo-1445847562439-f251c3799ea5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=632&q=80";
 const img2 =
   "https://images.unsplash.com/photo-1534939561126-855b8675edd7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80";
 
-export const CategoriesMock: ICategory[] = [
+export const categoriesMock: ICategory[] = [
     {name:"Breakfast", description:""},
     {name:"Boozy brunch", description:"Great brunch with an extra touch"}
 ]
 
-export const UnitsMock: IUnit[]= [
+export const unitsMock: IUnit[]= [
     {symbol:"Lbs", name:"Pound"},
     {symbol:"cl", name:"Centiliter"}
 ]
+export const timeIntervalMocks : ITimeInterval[] = [
+  {label: TimeIntervalLabel.Prep, timeValue:"30", timeUnit:TimeUnit.Minutes},
+  {label: TimeIntervalLabel.Cooking, timeValue:"2", timeUnit:TimeUnit.Hours},
+];
 
-export const RecipeMock1: IRecipe = {
+export const instructionsMock: IInstruction[] = [
+  {stepNum: 1, description: 'Take the avocado. Open them in half and empty them in a bowl'},
+  {stepNum: 2, description: 'Get a knife and fork and start slicing everything in tiny pieces'},
+  {stepNum: 3, description: 'Add the olive oil, salt, lemon juice, cayenne pepper and scallions'},
+  {stepNum: 4, description: 'Get your fork and start mashing and mixing'},
+  {stepNum: 5, description: 'READY ! If you have some leftover pour some lemon all over it and move it to a sealed container'},
+]
+
+export const recipeMock1: IRecipe = {
     titleShort: "Guacamole",
     titleLong: "Pretty dope guac",
-    description: "The story behind it ! ..., there's a lot to day actually ! \n Hy",
+    description: "The story behind it ! ... there's a lot to say actually !\ntypescFirst we'd do it every other week ! Can you believe that?",
     originalLink: "https://www.haldbakedxjd.com",
     lastModifier: "manonsEmail",
     auditDate: new Date("2020-07-12"),
     creationDate: new Date("2020-07-12"),
-    timeIntervals: [
-      {label: TimeIntervalLabel.Prep, timeValue:30, timeUnit:TimeUnit.Minutes},
-      {label: TimeIntervalLabel.Cooking, timeValue:2, timeUnit:TimeUnit.Hours},
-    ],
+    timeIntervals: timeIntervalMocks,
     ingredients: [] as IIngredient[],
     medias: [
         {mediaPath: img1, tag: 'picture', title:'img1'},
         {mediaPath: img2, tag: 'picture', title:'img2'}
     ] as IMedia[],
-    instructions: [] as IInstruction[],
-    categories: [CategoriesMock[0]],
+    instructions: instructionsMock,
+    categories: [categoriesMock[0]],
 }
+

@@ -3,12 +3,12 @@ import { createMuiTheme } from "@material-ui/core/styles";
 import { defaultRecipesContext } from "../../Contexts/RecipesContext";
 import { Router, Redirect } from "@reach/router";
 import { ThemeProvider } from "@material-ui/styles";
-import AllRecipesPage from "../Recipe/AllRecipesPage";
+import RecipesGlobalPage from "../Recipe/RecipesGlobalPage/RecipesGlobalPage";
 import DeliveryNote from "../../fonts/DeliveryNote.otf";
 import Main from "./Main";
 import NoMatch from "../common/NoMatch";
 import React from "react";
-import RecipePage from "../Recipe/RecipePage";
+import RecipePage from "../Recipe/RecipePage/RecipePage";
 import RecipesProvider from "../../Contexts/RecipesProvider";
 
 const theme = createMuiTheme({
@@ -51,7 +51,7 @@ const App: React.FC = () => {
         <RecipesProvider {...defaultRecipesContext}>
           <Main>
             <Router>
-              <AllRecipesPage path="/recipes" />
+              <RecipesGlobalPage path="/recipes" />
               <RecipePage path="/recipes/:recipeId" />
               <Redirect noThrow from="/" to="/recipes" />
               <NoMatch default />

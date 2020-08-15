@@ -1,18 +1,9 @@
 import React from "react";
-import {
-  CardMedia,
-  makeStyles,
-  Theme,
-  createStyles,
-  Box,
-  Card,
-  CardContent,
-  Typography,
-  Divider
+import { CardMedia, makeStyles, Theme, createStyles, Box, Card, CardContent, Typography, Divider
 } from "@material-ui/core";
-import IngredientsTable from "../RecipeUtils/IngredientsTable";
-import { IManageRecipeProps } from "./ManageRecipeCard";
 import { IRecipeCardProps } from "./RecipeCard";
+import { IManageRecipeProps } from "./ManageRecipeCard";
+import IngredientsTable from "../RecipeUtils/IngredientsTable";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

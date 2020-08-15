@@ -1,6 +1,5 @@
 import React from "react";
-import { RecipeMock1 } from "../../testTools/mockData";
-import { mount } from "enzyme";
+import { recipeMock1 } from "../../../testTools/mockData";
 import RecipeCard, { IRecipeCardProps } from "./RecipeCard";
 import { IManageRecipeProps } from "./ManageRecipeCard";
 import { createHistory, createMemorySource, LocationProvider } from "@reach/router";
@@ -13,20 +12,20 @@ const mockLocation = {
   state: ""
 };
 
-const renderWithRouter = (ui, {route = "/", history= createHistory(createMemorySource(route))} = {}){
-    return {
-        ...render(<LocationProvider history={history}>{ui}</LocationProvider>),
-        history
-    }
-}
+// const renderWithRouter = (ui, {route = "/", history= createHistory(createMemorySource(route))} = {}){
+//     return {
+//         ...render(<LocationProvider history={history}>{ui}</LocationProvider>),
+//         history
+//     }
+// }
 
 test('recipe card renders', async () => {
     const recipeProps: IRecipeCardProps & IManageRecipeProps = {
-            recipe: RecipeMock1,
+            recipe: recipeMock1,
             onHover: jest.fn
           };
-    const{container, history:{navigate}} = renderWithRouter(<RecipeCard {...recipeProps}/>);
-    const appContainer = container;
+    // const{container, history:{navigate}} = renderWithRouter(<RecipeCard {...recipeProps}/>);
+    // const appContainer = container;
 
 })
 

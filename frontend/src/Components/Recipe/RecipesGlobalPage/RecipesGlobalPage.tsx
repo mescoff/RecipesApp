@@ -1,9 +1,9 @@
-import { IRecipe } from "../../Interfaces/recipe.interface";
+import { IRecipe } from "../../../Interfaces/recipe.interface";
 import { ManageRecipeCard } from "./ManageRecipeCard";
 import Box from "@material-ui/core/Box";
 import React, { useContext } from "react";
 import {  RouteComponentProps,} from "@reach/router";
-import { RecipesContext, IRecipesContext } from "../../Contexts/RecipesContext";
+import { RecipesContext, IRecipesContext } from "../../../Contexts/RecipesContext";
 
 const img1 = "https://images.unsplash.com/photo-1445847562439-f251c3799ea5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=632&q=80";
 const img2 = "https://images.unsplash.com/photo-1534939561126-855b8675edd7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80";
@@ -23,7 +23,7 @@ const RecipeList: React.FC<{recipes: IRecipe[]}> = (props) => {
 
 // TODO: Don't forget to memoize AllRecipesPage to prevent over re-renders if context state updates on fields we don't care about in this component
 
-const AllRecipesPage: React.FC<RouteComponentProps> = () => {
+const RecipesGlobalPage: React.FC<RouteComponentProps> = () => {
   const recipesContext = useContext<IRecipesContext>(RecipesContext);
   // ApiService.Get("http://localhost:4001/");
   return (
@@ -39,4 +39,4 @@ const AllRecipesPage: React.FC<RouteComponentProps> = () => {
   );
 };
 
-export default AllRecipesPage;
+export default RecipesGlobalPage;

@@ -1,12 +1,12 @@
 import React from "react";
 import { IRecipesContext, RecipesContext, defaultRecipesContext } from "./RecipesContext";
 import { IRecipe } from "../Interfaces/recipe.interface";
-import { RecipeMock1 } from "../testTools/mockData";
+import { recipeMock1 } from "../testTools/mockData";
 
 const TestData = (): IRecipe[] => {
     const res = new Array<IRecipe>();
     for (let i = 0; i < 10; i++) {
-      res.push({ id: i.toString(), ...RecipeMock1 });
+      res.push({ id: i.toString(), ...recipeMock1 });
     }
     return res;
   };

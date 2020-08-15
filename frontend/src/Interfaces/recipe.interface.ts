@@ -66,7 +66,7 @@ export interface IUnit {
 
 export interface IInstruction {
   stepNum: number;
-  description: number;
+  description: string;
 }
 
 export interface ICategory {

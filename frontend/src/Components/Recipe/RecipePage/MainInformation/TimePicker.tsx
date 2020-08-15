@@ -1,9 +1,9 @@
-import React, { ChangeEvent, ReactElement, useState } from 'react';
-import { Grid, TextField, FormControl, Select, MenuItem, Tooltip } from '@material-ui/core';
-import { TimeUnit, ITimeInterval } from '../../Interfaces/recipe.interface';
-import { ITimeIntervalContainerProps } from './ManageRecipeForm';
-import { logInfo } from '../../Tools/functions';
-import Validate, { IValidationStatus } from '../../Tools/validate';
+import React, { ChangeEvent, useState } from 'react';
+import { Grid, TextField, FormControl, Select, MenuItem, Tooltip, Box } from '@material-ui/core';
+import { TimeUnit, ITimeInterval } from '../../../../Interfaces/recipe.interface';
+import { logInfo, nameof } from '../../../../Tools/functions';
+import Validate, { IValidationStatus } from '../../../../Tools/validate';
+import { ITimePickerContainerProps } from './TimePickerContainer';
 
 // TODO: useful for getting styles of Material-ui inputs and selects
 // const BootstrapInput = withStyles((theme: Theme) =>
@@ -44,11 +44,11 @@ import Validate, { IValidationStatus } from '../../Tools/validate';
 // )(InputBase);
 
 /**
- * Time Picker component: two boxes aligned in a row.  
+ * Time Picker component: update recipe's time intervals.  
  * One input for quantity, one dropdown for unit 
  * @param props : { timeInterval: ITimeInterval }
  */
-const TimePicker: React.FC<ITimeIntervalContainerProps> = (props) => {
+const TimePicker: React.FC<ITimePickerContainerProps> = (props) => {
   const logger = 'TimePicker';
   const [textFieldValidation, setTextFieldValidation] = useState<IValidationStatus>({ isValid: true });
   // TODO: forward validation back to manage
@@ -85,8 +85,8 @@ const TimePicker: React.FC<ITimeIntervalContainerProps> = (props) => {
    * @param child React element that was selected
    */
   const onUpdateSelect = (event: React.ChangeEvent<{ name?: string; value: unknown }>, child: React.ReactNode): void => {
-    if (event.target.name !== undefined) { 
-      const value : string = event.target.value as string;
+    if (event.target.name !== undefined) {
+      const value: string = event.target.value as string;
       // TimeInterval Property to update
       const intervalProperty = event.target.name;
       logInfo(logger, `onUpdateSelect: value:${value} prop:${intervalProperty}`);
@@ -96,40 +96,40 @@ const TimePicker: React.FC<ITimeIntervalContainerProps> = (props) => {
 
   return (
     <>
-      <Grid item xs={2}>
-        <Tooltip open={!textFieldValidation.isValid} title={textFieldValidation.errorMessage ?? ''} >
-          <TextField
-            id={`timeValue-${props.timeInterval.label}`}
-            size="small"
-            variant="outlined"
-            name="timeValue"
-            value={props.timeInterval.timeValue}
-            onChange={onUpdateTextField}
-            error={!textFieldValidation.isValid}
-          />
-        </Tooltip>
-      </Grid>
-      <Grid item xs={4}>
-        <FormControl variant="outlined" size="small" fullWidth={true}>
-          <Select
-            id="timeunit-select"
-            value={props.timeInterval.timeUnit}
-            name="timeUnit"
-            onChange={onUpdateSelect}
-          >
-            {Object.keys(TimeUnit).map(
-              key => {
-                const val = TimeUnit[key];
-                return (
-                  <MenuItem key={key} value={val}>
-                    {val}
-                  </MenuItem>
-                )
-              }
-            )}
-          </Select>
-        </FormControl>
-      </Grid>
+        <Grid item xs={2}>
+          <Tooltip open={!textFieldValidation.isValid} title={textFieldValidation.errorMessage ?? ''} >
+            <TextField
+              id={`timeValue-${props.timeInterval.label}`}
+              size="small"
+              variant="outlined"
+              name={nameof<ITimeInterval>("timeValue")}
+              value={props.timeInterval.timeValue}
+              onChange={onUpdateTextField}
+              error={!textFieldValidation.isValid}
+            />
+          </Tooltip>
+        </Grid>
+        <Grid item xs={4}>
+          <FormControl variant="outlined" size="small" fullWidth={true}>
+            <Select
+              id="timeunit-select"
+              value={props.timeInterval.timeUnit}
+              name={nameof<ITimeInterval>("timeUnit")}
+              onChange={onUpdateSelect}
+            >
+              {Object.keys(TimeUnit).map(
+                key => {
+                  const val = TimeUnit[key];
+                  return (
+                    <MenuItem key={key} value={val}>
+                      {val}
+                    </MenuItem>
+                  )
+                }
+              )}
+            </Select>
+          </FormControl>
+        </Grid>
     </>
   );
 }

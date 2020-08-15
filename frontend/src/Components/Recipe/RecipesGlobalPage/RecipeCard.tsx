@@ -11,7 +11,7 @@ import {
   makeStyles,
   createStyles
 } from "@material-ui/core";
-import { IRecipe } from "../../Interfaces/recipe.interface";
+import { IRecipe } from "../../../Interfaces/recipe.interface";
 import { IManageRecipeProps } from "./ManageRecipeCard";
 import { Link } from "@reach/router";
 import { useLocation } from "react-router";
