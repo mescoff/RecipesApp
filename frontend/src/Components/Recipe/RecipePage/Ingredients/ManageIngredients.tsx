@@ -1,0 +1,112 @@
+import React, { useState } from 'react';
+import { IIngredient } from '../../../../Interfaces/recipe.interface';
+import { Box, Typography, Divider, makeStyles, Theme, createStyles, IconButton } from '@material-ui/core';
+import IngredientContainer from './IngredientContainer';
+import { unitsMock } from '../../../../testTools/mockData';
+import { logInfo } from '../../../../Tools/helpers';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+
+
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    root: {
+      width: '100%',
+      maxWidth: 400,
+      backgroundColor: theme.palette.background.paper,
+      display: "flex",
+      flexDirection: "column"
+    },
+    divider: {
+      marginBottom: '8vh'
+    }
+  })
+);
+
+// TESTS
+// - textfield update properly
+// - dropdown for unit works properly
+// - only tempIngredients are updated not props.ingredients
+// - adding new ingredient works (added and on modif tempIngredients is updated properly)
+// - test delete
+
+/**
+ * Container for ingredients
+ * @param props : { ingredients: IIngredient[] }
+ */
+const ManageIngredients: React.FC<{ ingredients: IIngredient[] }> = (props) => {
+  // FIXME: At the moment all separate components are Managed (Ingredients, Instructions, Info) but eventually put together we'll have to move control up to common parent
+  const logger = 'ManageIngredients';
+  const [tempIngredients, setIngredients] = useState<IIngredient[]>(props.ingredients);
+  const styles = useStyles();
+  const units = unitsMock;
+
+  const handleChange = (ingredient: IIngredient) => {
+    logInfo(logger, `[Update Ingredient]:`, ingredient);
+    const ingredientIndex = tempIngredients.findIndex(i => i.id === ingredient.id);
+    if (ingredientIndex !== -1) {
+      const updatedIngredients = [
+        ...tempIngredients.slice(0, ingredientIndex),
+        ingredient,
+        ...tempIngredients.slice(ingredientIndex + 1)
+      ];
+      setIngredients(updatedIngredients);
+    }
+    else {
+      logInfo(logger, `[Update Ingredient] Ingredient with id ${ingredient.id} not found`);
+    }
+  }
+
+  const handleDelete = (id: number) => {
+    const ingredientIndex = tempIngredients.findIndex(i => i.id === id);
+    if (ingredientIndex !== -1) {
+      logInfo(logger, `[Delete Ingredient] With id: ${id}`);
+      const updatedIngredients = [
+        ...tempIngredients.slice(0, ingredientIndex),
+        ...tempIngredients.slice(ingredientIndex + 1)
+      ];
+      setIngredients(updatedIngredients);
+    }
+    else {
+      logInfo(logger, `[Delete Ingredient] Ingredient with id ${id} not found`);
+    }
+  }
+
+  const onAddClicked = () => {
+    // WATCHOUT: For now we assume that when receving the ingredients we generate our own ids in order and can assume that the bottom ingredient has the highest ID. 
+    // So new id is last element's id + 1...
+    const tempId = tempIngredients.length > 0 ? tempIngredients[tempIngredients.length - 1].id + 1 : 0;
+    const emptyIngredient: IIngredient = { name: '', quantity: '', id: tempId, unit: units[0] }
+    logInfo(logger, `[Add Ingredient] Id ${tempId}`);
+    const updatedIngredients = [
+      ...tempIngredients.slice(0),
+      emptyIngredient
+    ]
+    setIngredients(updatedIngredients);
+  }
+
+
+
+
+  return (
+    <Box className={styles.root} >
+      <Box display="flex" flexDirection="row" justifyContent="space-between" >
+        <Typography variant="h4" >
+          Ingredients
+        </Typography>
+        <IconButton size='medium' color="primary" aria-label="add new ingredient" onClick={onAddClicked}>
+          <AddCircleOutlineIcon />
+        </IconButton>
+      </Box>
+      <Divider className={styles.divider} />
+      <Box display="flex" flexDirection="column" >
+        {
+          tempIngredients.map(i => (
+            <IngredientContainer key={i.id} ingredient={i} units={units} handleChange={handleChange} handleDelete={handleDelete}/>
+          ))
+        }
+      </Box>
+    </Box>
+  )
+}
+
+export default ManageIngredients;

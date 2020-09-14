@@ -10,8 +10,11 @@ export const categoriesMock: ICategory[] = [
 ]
 
 export const unitsMock: IUnit[]= [
-    {symbol:"Lbs", name:"Pound"},
-    {symbol:"cl", name:"Centiliter"}
+    {id:0,symbol:"Lbs", name:"Pound"},
+    {id:1,symbol:"cl", name:"Centiliter"},
+    {id:2,symbol:"cup", name:"Cup"},
+    {id:3,symbol:"Tbsp", name:"Tablespoon"},
+    {id:4,symbol:"Tsp", name:"Teaspoon"},
 ]
 export const timeIntervalMocks : ITimeInterval[] = [
   {label: TimeIntervalLabel.Prep, timeValue:"30", timeUnit:TimeUnit.Minutes},
@@ -24,6 +27,12 @@ export const instructionsMock: IInstruction[] = [
   {stepNum: 3, description: 'Add the olive oil, salt, lemon juice, cayenne pepper and scallions'},
   {stepNum: 4, description: 'Get your fork and start mashing and mixing'},
   {stepNum: 5, description: 'READY ! If you have some leftover pour some lemon all over it and move it to a sealed container'},
+]
+
+export const ingredientsMock: IIngredient[] = [
+  {id:0,name: 'Broccoli', quantity: '3', unit: unitsMock[2] },
+  {id:1,name: 'Olive Oil', quantity: '1', unit: unitsMock[3] },
+  {id:2,name: 'Salt', quantity: '3', unit: unitsMock[4] },
 ]
 
 export const recipeMock1: IRecipe = {

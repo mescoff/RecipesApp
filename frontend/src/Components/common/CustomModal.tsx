@@ -1,10 +1,10 @@
-import { Fade, Modal, makeStyles, Theme, createStyles, Button
+import { Fade, Modal, makeStyles, Theme, createStyles
 } from "@material-ui/core";
 import React, { Dispatch, SetStateAction } from "react";
 import { navigate } from "@reach/router";
 import LostYouWayButton from "./LostYourWayButton";
 
-const useStyles = makeStyles((theme: Theme) =>
+export const modalStyles = makeStyles((theme: Theme) =>
   createStyles({
     modal: {
       display: "flex",
@@ -30,8 +30,9 @@ interface ICustomModalProps {
 }
 
 const CustomModal: React.FC<ICustomModalProps> = props => {
-  const classes = useStyles();
+  const classes = modalStyles();
 
+  // FIXME: below is buggy
   const redirect = () => {
     if (props.redirectLink) navigate(props.redirectLink);
   };
@@ -65,7 +66,6 @@ const CustomModal: React.FC<ICustomModalProps> = props => {
   );
 };
 
-{
   /* <Typography
                   style={{ fontStyle: "italic" }}
                   color="primary"
@@ -74,6 +74,5 @@ const CustomModal: React.FC<ICustomModalProps> = props => {
                 >
                   Let's get you back on track...
                 </Typography> */
-}
 
 export default CustomModal;

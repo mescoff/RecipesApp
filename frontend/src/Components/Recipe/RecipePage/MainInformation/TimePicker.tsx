@@ -1,7 +1,7 @@
 import React, { ChangeEvent, useState } from 'react';
-import { Grid, TextField, FormControl, Select, MenuItem, Tooltip, Box } from '@material-ui/core';
+import { Grid, TextField, FormControl, Select, MenuItem, Tooltip } from '@material-ui/core';
 import { TimeUnit, ITimeInterval } from '../../../../Interfaces/recipe.interface';
-import { logInfo, nameof } from '../../../../Tools/functions';
+import { logInfo, nameof } from '../../../../Tools/helpers';
 import Validate, { IValidationStatus } from '../../../../Tools/validate';
 import { ITimePickerContainerProps } from './TimePickerContainer';
 
@@ -67,7 +67,7 @@ const TimePicker: React.FC<ITimePickerContainerProps> = (props) => {
     const intervalProperty = event.target.name;
     logInfo(logger, `onUpdateTextField: value ${value}, prop:${intervalProperty}`);
     // if empty value just update
-    if (value == '') {
+    if (value === '') {
       props.handleChange(props.timeInterval.label, intervalProperty, value);
     }
     else {

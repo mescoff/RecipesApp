@@ -43,7 +43,7 @@ export enum ConversionType {
 //   TEMPERATURE
 // };
 
-export const Convertor = (
+export const TemperatureConvertor = (
   unit_to_convert: number,
   conversion_type: ConversionType
 ) => {

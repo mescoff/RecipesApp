@@ -1,8 +1,8 @@
 import React from 'react';
-import { Grid, FormControl, InputLabel, OutlinedInput, Typography, makeStyles, Theme, createStyles, TextField, Box } from '@material-ui/core';
+import { Grid, FormControl, InputLabel, OutlinedInput, Typography, makeStyles, Theme, createStyles, TextField, Box, Divider } from '@material-ui/core';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import TimePickerContainer from './TimePickerContainer';
-import { nameof } from '../../../../Tools/functions';
+import { nameof } from '../../../../Tools/helpers';
 import { IRecipe, TimeUnit } from '../../../../Interfaces/recipe.interface';
 
 export interface IRecipeFormProps {
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     icon: {
       // fontSize: 'small'
-      marginRight: '2px'
+      marginLeft: '4px'
     },
     multilineInput: {
       '& .MuiTextField-root': {
@@ -65,9 +65,15 @@ const RecipeForm: React.FC<IRecipeFormProps> = (props) => {
         </FormControl>
 
         <Grid item xs={2} sm container direction="row"  >
-          <AccessTimeIcon className={styles.icon} />
           <Typography className={styles.typo}>Time</Typography>
+          <AccessTimeIcon className={styles.icon} />
         </Grid>
+
+        {/* <Grid item xs={12} sm container direction="row"  >
+          <Grid item xs={4} >
+            <Divider />
+          </Grid>
+        </Grid> */}
 
         {/* <Grid item xs={12} sm container alignItems="center" spacing={1}> */}
         <>
@@ -77,20 +83,20 @@ const RecipeForm: React.FC<IRecipeFormProps> = (props) => {
         </>
 
         <Grid item xs={12} sm container direction="row"  >
-        <Box mt={2} width={1}>
-          <TextField
-            id="recipe-description"
-            label="Description"
-            multiline
-            rows={4}
-            defaultValue="A few words to describe me !"
-            variant="outlined"
-            value={props.recipe.description}
-            name={nameof<IRecipe>("description")}
-            onChange={props.handleGeneralChange}
-            fullWidth={true}
-          />
-        </Box>
+          <Box mt={2} width={1}>
+            <TextField
+              id="recipe-description"
+              label="Description"
+              multiline
+              rows={4}
+              defaultValue="A few words to describe me !"
+              variant="outlined"
+              value={props.recipe.description}
+              name={nameof<IRecipe>("description")}
+              onChange={props.handleGeneralChange}
+              fullWidth={true}
+            />
+          </Box>
         </Grid>
 
       </form>

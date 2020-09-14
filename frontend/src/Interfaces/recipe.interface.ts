@@ -48,6 +48,7 @@ export const defaultRecipe: IRecipe = {
 }
 
 export interface IIngredient {
+  id: number;
   name: string;
   quantity: string;
   unit: IUnit;
@@ -60,6 +61,7 @@ export interface IMedia {
 }
 
 export interface IUnit {
+  id: number;
   name: string;
   symbol: string;
 }
