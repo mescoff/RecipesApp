@@ -1,6 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import ImageSelectorModal from "../Components/Recipe/RecipePage/Instructions/ImageSelectorModal";
+import ImageSelectorModal from "../components/recipe/recipePage/instructions/ImageSelectorModal";
 
 export default {
   title: "Example/ImageSelectorModal",

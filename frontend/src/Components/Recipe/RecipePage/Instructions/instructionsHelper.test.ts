@@ -1,4 +1,4 @@
-import { IInstruction } from "../../../../Interfaces/recipe.interface"
+import { IInstruction } from "../../../../interfaces/recipe.interface"
 import { deleteElementAndReorder, moveElementandReorder } from "./instructionsHelper";
 import { instructionsMock } from "../../../../testTools/mockData";
 

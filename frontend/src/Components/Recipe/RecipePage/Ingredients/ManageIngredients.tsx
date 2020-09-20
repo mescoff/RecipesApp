@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { IIngredient } from '../../../../Interfaces/recipe.interface';
+import { IIngredient } from '../../../../interfaces/recipe.interface';
 import { Box, Typography, Divider, makeStyles, Theme, createStyles, IconButton } from '@material-ui/core';
 import IngredientContainer from './IngredientContainer';
 import { unitsMock } from '../../../../testTools/mockData';
-import { logInfo } from '../../../../Tools/helpers';
+import { logInfo } from '../../../../helpers/helpers';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { IRecipe } from '../Interfaces/recipe.interface';
+import { IRecipe } from '../interfaces/recipe.interface';
 
 export interface IRecipesContext{
     recipes: IRecipe[];

@@ -1,9 +1,9 @@
 import React from 'react';
-import TimePicker from '../Components/Recipe/RecipePage/MainInformation/TimePicker';
+import TimePicker from '../components/recipe/recipePage/mainInformation/TimePicker';
 import { Meta, Story } from '@storybook/react/types-6-0';
 import { timeIntervalMocks } from '../testTools/mockData';
 import { Grid } from '@material-ui/core';
-import { ITimePickerContainerProps } from '../Components/Recipe/RecipePage/MainInformation/TimePickerContainer';
+import { ITimePickerContainerProps } from '../components/recipe/recipePage/mainInformation/TimePickerContainer';
 
 export default {
   title: "Example/TimePicker",

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { IInstruction } from '../../../../Interfaces/recipe.interface';
+import { IInstruction } from '../../../../interfaces/recipe.interface';
 import InstructionContainer from './InstructionContainer';
 import { Box, Typography, IconButton, Divider, makeStyles, Theme, createStyles } from '@material-ui/core';
-import { logInfo } from '../../../../Tools/helpers';
+import { logInfo } from '../../../../helpers/helpers';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import { DragDropContext } from 'react-beautiful-dnd';
 
@@ -116,8 +116,8 @@ const ManageInstructions: React.FC<{ instructions: IInstruction[] }> = (props) =
       </Box>
       <Divider className={styles.divider} />
       <Box display="flex" flexDirection="column" >
-        {tempInstructions.map(i => (
-          <InstructionContainer key={`instruction_${i.stepNum}`} instruction={i} handleChange={handleChange} handleDelete={handleDelete} />
+        {tempInstructions.map((instruction, index) => (
+          <InstructionContainer key={`instruction_${instruction.stepNum}`} instructionIndex={index} instruction={instruction} handleChange={handleChange} handleDelete={handleDelete} />
         ))
         }
       </Box>

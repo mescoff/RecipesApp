@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { IInstruction } from '../../../../Interfaces/recipe.interface';
+import { IInstruction } from '../../../../interfaces/recipe.interface';
 import InstructionContainer from './InstructionContainer';
 import { Box, Typography, IconButton, Divider, makeStyles, Theme, createStyles } from '@material-ui/core';
-import { logInfo } from '../../../../Tools/helpers';
+import { logInfo } from '../../../../helpers/helpers';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import { DragDropContext, Droppable, Draggable, DropResult } from 'react-beautiful-dnd';
 import { moveElementandReorder, deleteElementAndReorder } from './instructionsHelper';

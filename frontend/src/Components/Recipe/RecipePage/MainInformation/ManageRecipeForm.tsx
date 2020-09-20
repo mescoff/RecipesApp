@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { IRecipe, TimeUnit } from "../../../../Interfaces/recipe.interface";
-import { logInfo } from "../../../../Tools/helpers";
+import { IRecipe, TimeUnit } from "../../../../interfaces/recipe.interface";
+import { logInfo } from "../../../../helpers/helpers";
 import RecipeForm from "./RecipeForm";
 
 export interface IManageRecipeFormProps {

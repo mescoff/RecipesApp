@@ -2,8 +2,8 @@ import React from 'react';
 import { Grid, FormControl, InputLabel, OutlinedInput, Typography, makeStyles, Theme, createStyles, TextField, Box, Divider } from '@material-ui/core';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import TimePickerContainer from './TimePickerContainer';
-import { nameof } from '../../../../Tools/helpers';
-import { IRecipe, TimeUnit } from '../../../../Interfaces/recipe.interface';
+import { nameof } from '../../../../helpers/helpers';
+import { IRecipe, TimeUnit } from '../../../../interfaces/recipe.interface';
 
 export interface IRecipeFormProps {
   recipe: IRecipe;

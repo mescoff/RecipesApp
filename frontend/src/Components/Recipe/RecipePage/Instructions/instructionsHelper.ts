@@ -1,5 +1,5 @@
-import { IInstruction } from "../../../../Interfaces/recipe.interface";
-import { logInfo } from "../../../../Tools/helpers";
+import { IInstruction } from "../../../../interfaces/recipe.interface";
+import { logInfo } from "../../../../helpers/helpers";
 
 /**
  * Move element in a list of instructions and reorder rest of the steps

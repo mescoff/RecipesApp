@@ -4,8 +4,8 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
-import logo from "../../Icons/fried.svg";
-import toolbarImg from "../../Images/food.jpeg";
+import logo from "../../icons/fried.svg";
+import toolbarImg from "../../images/food.jpeg";
 import { makeStyles, Paper, Box, Container } from "@material-ui/core";
 
 // import Typography from '@material-ui/core/Typography';

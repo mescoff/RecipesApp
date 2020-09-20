@@ -1,8 +1,8 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
 import { instructionsMock } from "../testTools/mockData";
-import ManageInstructionsDraggable from "../Components/Recipe/RecipePage/Instructions/ManageInstructionsDraggable";
-import { IInstruction } from "../Interfaces/recipe.interface";
+import ManageInstructionsDraggable from "../components/recipe/recipePage/instructions/ManageInstructionsDraggable";
+import { IInstruction } from "../interfaces/recipe.interface";
 
 
 export default {

@@ -1,6 +1,6 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import ManageRecipeForm, { IManageRecipeFormProps } from "../Components/Recipe/RecipePage/MainInformation/ManageRecipeForm";
+import ManageRecipeForm, { IManageRecipeFormProps } from "../components/recipe/recipePage/mainInformation/ManageRecipeForm";
 import { recipeMock1 } from "../testTools/mockData";
 
 export default {

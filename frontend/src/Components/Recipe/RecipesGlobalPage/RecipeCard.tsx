@@ -1,5 +1,5 @@
 import React from "react";
-import "./Recipe.css";
+// import "./Recipe.css";
 // import PropTypes from 'prop-types';
 import Card from "@material-ui/core/Card";
 import CardMedia from "@material-ui/core/CardMedia";
@@ -11,7 +11,7 @@ import {
   makeStyles,
   createStyles
 } from "@material-ui/core";
-import { IRecipe } from "../../../Interfaces/recipe.interface";
+import { IRecipe } from "../../../interfaces/recipe.interface";
 import { IManageRecipeProps } from "./ManageRecipeCard";
 import { Link } from "@reach/router";
 import { useLocation } from "react-router";

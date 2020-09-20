@@ -3,7 +3,7 @@ import { CardMedia, makeStyles, Theme, createStyles, Box, Card, CardContent, Typ
 } from "@material-ui/core";
 import { IRecipeCardProps } from "./RecipeCard";
 import { IManageRecipeProps } from "./ManageRecipeCard";
-import IngredientsTable from "../RecipeUtils/IngredientsTable";
+import IngredientsTable from "../recipeUtils/IngredientsTable";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

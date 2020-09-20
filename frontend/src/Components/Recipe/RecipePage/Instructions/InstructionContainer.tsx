@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { IInstruction } from '../../../../Interfaces/recipe.interface';
+import { IInstruction } from '../../../../interfaces/recipe.interface';
 import { Box, TextField, Typography, makeStyles, Theme, createStyles, IconButton } from '@material-ui/core';
 import PhotoAlbumOutlinedIcon from '@material-ui/icons/PhotoAlbumOutlined';
 import ClearIcon from '@material-ui/icons/Clear';
-import { logInfo } from '../../../../Tools/helpers';
+import { logInfo } from '../../../../helpers/helpers';
 import { Draggable } from 'react-beautiful-dnd';
 
 interface IInstructionContainerProps {

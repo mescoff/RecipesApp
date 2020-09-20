@@ -1,6 +1,6 @@
 import React from "react";
 import { IRecipesContext, RecipesContext, defaultRecipesContext } from "./RecipesContext";
-import { IRecipe } from "../Interfaces/recipe.interface";
+import { IRecipe } from "../interfaces/recipe.interface";
 import { recipeMock1 } from "../testTools/mockData";
 
 const TestData = (): IRecipe[] => {

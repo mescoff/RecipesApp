@@ -1,5 +1,5 @@
 import React from 'react';
-import { ITimeInterval } from '../../../../Interfaces/recipe.interface';
+import { ITimeInterval } from '../../../../interfaces/recipe.interface';
 import { Grid, Divider, Typography, makeStyles, Theme, createStyles } from '@material-ui/core';
 import TimePicker from './TimePicker';
 import { IRecipeFormProps } from './RecipeForm';

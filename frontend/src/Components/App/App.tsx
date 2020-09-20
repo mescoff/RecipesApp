@@ -1,15 +1,15 @@
 import "./App.css";
 import { createMuiTheme } from "@material-ui/core/styles";
-import { defaultRecipesContext } from "../../Contexts/RecipesContext";
+import { defaultRecipesContext } from "../../contexts/RecipesContext";
 import { Router, Redirect } from "@reach/router";
 import { ThemeProvider } from "@material-ui/styles";
-import RecipesGlobalPage from "../Recipe/RecipesGlobalPage/RecipesGlobalPage";
+import RecipesGlobalPage from "../recipe/recipesGlobalPage/RecipesGlobalPage";
 import DeliveryNote from "../../fonts/DeliveryNote.otf";
 import Main from "./Main";
 import NoMatch from "../common/NoMatch";
 import React from "react";
-import RecipePage from "../Recipe/RecipePage/RecipePage";
-import RecipesProvider from "../../Contexts/RecipesProvider";
+import RecipePage from "../recipe/recipePage/RecipePage";
+import RecipesProvider from "../../contexts/RecipesProvider";
 
 const theme = createMuiTheme({
   typography: {

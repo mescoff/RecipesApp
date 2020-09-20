@@ -1,8 +1,8 @@
 import React, { ChangeEvent, useState } from 'react';
 import { Grid, TextField, FormControl, Select, MenuItem, Tooltip } from '@material-ui/core';
-import { TimeUnit, ITimeInterval } from '../../../../Interfaces/recipe.interface';
-import { logInfo, nameof } from '../../../../Tools/helpers';
-import Validate, { IValidationStatus } from '../../../../Tools/validate';
+import { TimeUnit, ITimeInterval } from '../../../../interfaces/recipe.interface';
+import { logInfo, nameof } from '../../../../helpers/helpers';
+import Validate, { IValidationStatus } from '../../../../helpers/validate';
 import { ITimePickerContainerProps } from './TimePickerContainer';
 
 // TODO: useful for getting styles of Material-ui inputs and selects

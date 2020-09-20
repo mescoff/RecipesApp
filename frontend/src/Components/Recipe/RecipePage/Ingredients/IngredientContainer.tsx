@@ -1,7 +1,7 @@
 import React, { ChangeEvent } from 'react';
-import { IIngredient, IUnit } from '../../../../Interfaces/recipe.interface';
+import { IIngredient, IUnit } from '../../../../interfaces/recipe.interface';
 import { Box, TextField, createStyles, Theme, makeStyles, MenuItem, FormControl, Select, IconButton } from '@material-ui/core';
-import { logInfo, nameof } from '../../../../Tools/helpers';
+import { logInfo, nameof } from '../../../../helpers/helpers';
 import ClearIcon from '@material-ui/icons/Clear';
 
 interface IIngredientContainerProps {

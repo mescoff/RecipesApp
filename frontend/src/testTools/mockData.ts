@@ -1,4 +1,4 @@
-import { ICategory, IUnit, IRecipe, IIngredient, IMedia, IInstruction, TimeIntervalLabel, TimeUnit, ITimeInterval } from "../Interfaces/recipe.interface";
+import { ICategory, IUnit, IRecipe, IIngredient, IMedia, IInstruction, TimeIntervalLabel, TimeUnit, ITimeInterval } from "../interfaces/recipe.interface";
 const img1 =
   "https://images.unsplash.com/photo-1445847562439-f251c3799ea5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=632&q=80";
 const img2 =
