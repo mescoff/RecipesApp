@@ -97,8 +97,8 @@ const ManageInstructionsDraggable: React.FC<{ instructions: IInstruction[] }> = 
   // Draggable help: https://codesandbox.io/s/k260nyxq9v?file=/index.js:425-564 and  https://codesandbox.io/s/zqwz5n5p9x
   return (
     <Box className={styles.root} >
-      <Box display="flex" flexDirection="row" justifyContent="space-between" >
-        <Typography variant="h4" >
+      <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems='center' >
+        <Typography variant="h5" >
           Instructions
         </Typography>
         <IconButton size='medium' color="primary" aria-label="add new instruction" onClick={onAddClicked}>

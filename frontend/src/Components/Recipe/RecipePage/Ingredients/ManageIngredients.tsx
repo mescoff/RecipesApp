@@ -89,8 +89,8 @@ const ManageIngredients: React.FC<{ ingredients: IIngredient[] }> = (props) => {
 
   return (
     <Box className={styles.root} >
-      <Box display="flex" flexDirection="row" justifyContent="space-between" >
-        <Typography variant="h4" >
+      <Box display="flex" flexDirection="row" justifyContent="space-between" alignItems='center'>
+        <Typography variant="h5" >
           Ingredients
         </Typography>
         <IconButton size='medium' color="primary" aria-label="add new ingredient" onClick={onAddClicked}>

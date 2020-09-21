@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IRecipe, TimeUnit } from "../../../../interfaces/recipe.interface";
 import { logInfo } from "../../../../helpers/helpers";
 import RecipeForm from "./RecipeForm";
+import { Box } from "@material-ui/core";
 
 export interface IManageRecipeFormProps {
   recipe: IRecipe;
@@ -10,7 +11,11 @@ export interface IManageRecipeFormProps {
 
 const ManageRecipeForm: React.FC<IManageRecipeFormProps> = props => {
   const logger = "ManageRecipeForm";
-  const [tempRecipe, setTempRecipe] = useState<IRecipe>(props.recipe);
+  const [tempRecipe, setTempRecipe] = useState<IRecipe>({...props.recipe});
+
+  useEffect( () => {
+    setTempRecipe({...props.recipe});
+  }, [props.recipe]);
 
   /**
    * Handle updates from most inputs 
@@ -34,7 +39,7 @@ const ManageRecipeForm: React.FC<IManageRecipeFormProps> = props => {
     // Multistep update to avoid mutating the state -- and even more steps to make it more legible
     // Retrieving index of interval we need to update. Looking by label
     const intervalIndex = tempRecipe.timeIntervals.findIndex(i => i.label === intervalLabel);
-    logInfo(logger, `handleTimeIntervalUpdate Value: ${value}, typeOf: ${typeof(value)}`);
+    logInfo(logger, `handleTimeIntervalUpdate Value: ${value}, typeOf: ${typeof (value)}`);
     if (intervalIndex !== -1) {
       // create new interval with updated property
       const updatedInterval = {
@@ -58,7 +63,9 @@ const ManageRecipeForm: React.FC<IManageRecipeFormProps> = props => {
   // TODO: ON Send back to Context. Don't send if some fields are not valid !! => so get validation
 
   return (
-    <RecipeForm recipe={tempRecipe} handleGeneralChange={handleGeneralChange} handleTimePickerChange={handleTimePickerUpdate}/>
+    <Box ml={3}>
+      <RecipeForm recipe={tempRecipe} handleGeneralChange={handleGeneralChange} handleTimePickerChange={handleTimePickerUpdate} />
+    </Box>
   );
 };
 

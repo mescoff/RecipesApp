@@ -33,14 +33,18 @@ export enum TimeUnit {
 
 
 export const defaultRecipe: IRecipe = {
-   
+  id: "-1",
   titleShort: "",
+  titleLong: "",
   description: "",
   originalLink: "",
   lastModifier: "",
   auditDate:  new Date(Date.now()),
   creationDate: new Date(Date.now()),
-  timeIntervals:[],
+  timeIntervals:[
+    {label: TimeIntervalLabel.Prep, timeValue:"1", timeUnit:TimeUnit.Minutes},
+    {label: TimeIntervalLabel.Cooking, timeValue:"1", timeUnit:TimeUnit.Minutes}
+  ],
   ingredients: [],
   medias: [],
   instructions: [],

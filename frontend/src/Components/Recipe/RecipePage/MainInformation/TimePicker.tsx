@@ -116,6 +116,7 @@ const TimePicker: React.FC<ITimePickerContainerProps> = (props) => {
               value={props.timeInterval.timeUnit}
               name={nameof<ITimeInterval>("timeUnit")}
               onChange={onUpdateSelect}
+              style={{width:'8vw'}}
             >
               {Object.keys(TimeUnit).map(
                 key => {

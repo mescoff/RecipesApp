@@ -107,7 +107,7 @@ const ManageInstructions: React.FC<{ instructions: IInstruction[] }> = (props) =
   return (
     <Box className={styles.root} >
       <Box display="flex" flexDirection="row" justifyContent="space-between" >
-        <Typography variant="h4" >
+        <Typography variant='h5' >
           Instructions
         </Typography>
         <IconButton size='medium' color="primary" aria-label="add new instruction" onClick={onAddClicked}>
