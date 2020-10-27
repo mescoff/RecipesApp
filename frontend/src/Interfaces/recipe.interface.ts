@@ -1,6 +1,6 @@
 export interface IRecipe {
   // Will generate those myself
-  id?: string;
+  id: number;
   titleShort: string;
   titleLong?: string;
   description: string;
@@ -10,7 +10,7 @@ export interface IRecipe {
   creationDate: Date;
   timeIntervals: ITimeInterval[];
   ingredients: IIngredient[];
-  medias: IMedia[];
+  media: IMedia[];
   instructions: IInstruction[];
   categories: ICategory[];
 }
@@ -33,7 +33,7 @@ export enum TimeUnit {
 
 
 export const defaultRecipe: IRecipe = {
-  id: "-1",
+  id: -1,
   titleShort: "",
   titleLong: "",
   description: "",
@@ -46,7 +46,7 @@ export const defaultRecipe: IRecipe = {
     {label: TimeIntervalLabel.Cooking, timeValue:"1", timeUnit:TimeUnit.Minutes}
   ],
   ingredients: [],
-  medias: [],
+  media: [],
   instructions: [],
   categories: [],
 }
@@ -59,6 +59,7 @@ export interface IIngredient {
 }
 
 export interface IMedia {
+  id: number;
   mediaPath: string;
   title: string;
   tag: string;
@@ -71,11 +72,14 @@ export interface IUnit {
 }
 
 export interface IInstruction {
+  id: number;
   stepNum: number;
   description: string;
+  media?: IMedia;
 }
 
 export interface ICategory {
+  id: number;
   name: string;
   description: string;
 }

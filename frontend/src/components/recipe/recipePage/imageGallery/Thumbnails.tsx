@@ -8,9 +8,11 @@ const useStyles = makeStyles((theme: Theme) =>
       // maxWidth: '20%',
       // maxHeight: '90%',
       // width: '10%',
-      height: '90%',
-      width: '9%',
-      borderRadius: '2px',
+      height: '50px',
+      width: '50px',
+      // height: '100%',
+      // width: '10%',
+      borderRadius: '50%',
       boxShadow: '0px 2px 1px -1px rgba(0,0,0,0.2), 0px 1px 1px 0px rgba(0,0,0,0.14), 0px 1px 3px 0px rgba(0,0,0,0.12)',
       backgroundColor: 'rgba(0,0,0,0.2)',
       margin: '1%',
@@ -44,7 +46,8 @@ interface IThumbnailsProps {
 const Thumbnails: React.FC<IThumbnailsProps> = (props) => {
   const styles = useStyles();
   return (
-    <Box height={1} display='flex' justifyContent='flex-start' alignItems='center'>
+    // <Box height={1} display='flex' justifyContent='flex-start' alignItems='center'>
+    <>
       {
         props.medias.map((media, index) => {
           // Add opacity on top of thumbnails that are the one currently selected
@@ -73,7 +76,8 @@ const Thumbnails: React.FC<IThumbnailsProps> = (props) => {
           )
         })
       }
-    </Box>
+      </>
+    // </Box>
   );
 }
 

@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       width: '100%',
-      maxWidth: '70vw',
+      maxWidth: '500px',
       backgroundColor: theme.palette.background.paper,
       display: "flex",
       flexDirection: "column"
@@ -57,7 +57,7 @@ const ManageInstructionsDraggable: React.FC<{ instructions: IInstruction[] }> = 
   const onAddClicked = () => {
     // WATCHOUT: Right now we assume that last element is highest step. But what about when user will be able to reorder them
     const newStepNumber = tempInstructions.length > 0 ? tempInstructions[tempInstructions.length - 1].stepNum + 1 : 1;
-    const emptyInstruction: IInstruction = { stepNum: newStepNumber, description: '' }
+    const emptyInstruction: IInstruction = {id:0, stepNum: newStepNumber, description: '' }
     logInfo(logger, `[Add Instruction]. StepNum ${newStepNumber}`);
     const updatedInstructions = [
       ...tempInstructions.slice(0),

@@ -34,7 +34,7 @@ const HeaderBar = () => {
     <div>
       {/* <AppBar */}
       <Box
-        style={{ backgroundImage: `url(${toolbarImg})`, height: "13vh" }}
+        style={{ backgroundImage: `url(${toolbarImg})`, height: "13vh",opacity:0.6 }}
         // position="static"
         display="flex"
         alignItems="center"

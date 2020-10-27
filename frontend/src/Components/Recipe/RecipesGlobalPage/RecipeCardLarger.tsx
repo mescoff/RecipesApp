@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme: Theme) =>
 
 export const RecipeLarger = (props: IRecipeCardProps & IManageRecipeProps ) => {
   const classes = useStyles();
-  const { medias, titleShort, description } = props.recipe;
+  const { media: medias, titleShort, description } = props.recipe;
   return (
     <Box width="50%" height="60%">
       <Card className={classes.root} onClick={() => props.onHover(props.recipe)}>

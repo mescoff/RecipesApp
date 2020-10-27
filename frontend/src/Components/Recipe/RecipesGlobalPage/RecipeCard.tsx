@@ -42,7 +42,7 @@ export interface IRecipeCardProps {
 }
 
 const RecipeCard = (props: IRecipeCardProps & IManageRecipeProps) => {
-  const { id, medias, titleShort, description } = props.recipe;
+  const { id, media, titleShort, description } = props.recipe;
   const classes = useStyles();
   const location = useLocation();
   return (
@@ -55,7 +55,7 @@ const RecipeCard = (props: IRecipeCardProps & IManageRecipeProps) => {
             {/* <CardActionArea> */}
             <CardMedia
               className={classes.picture}
-              image={medias[0].mediaPath}
+              image={media[0].mediaPath}
               title={titleShort}
             />
             <CardContent>

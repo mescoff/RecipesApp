@@ -77,11 +77,17 @@ const RecipeForm: React.FC<IRecipeFormProps> = (props) => {
           <Typography className={styles.typo}>Time</Typography>
           <AccessTimeIcon className={styles.icon} />
         </Grid>
-        <>
-          {props.recipe.timeIntervals.map(interval => (
-            <TimePickerContainer key={interval.label} timeInterval={interval} handleChange={props.handleTimePickerChange} />
-          ))}
-        </>
+        {props.recipe.timeIntervals !== undefined && props.recipe.timeIntervals.length > 1 &&
+        // TODO: remove eventually because time interval should never be empty...
+          <>
+            {
+              props.recipe.timeIntervals.map(interval => (
+                <TimePickerContainer key={interval.label} timeInterval={interval} handleChange={props.handleTimePickerChange} />
+              ))
+            }
+          </>
+        }
+
         <Grid item xs={12} sm container direction="row"  >
           <Box mt={2} width={1}>
             <TextField

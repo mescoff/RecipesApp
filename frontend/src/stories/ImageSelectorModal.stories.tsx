@@ -11,9 +11,7 @@ export default {
 } as Meta;
 
 const Template: Story = () => (
-
     <ImageSelectorModal />
-
 );
 
 export const Basic = Template.bind({});

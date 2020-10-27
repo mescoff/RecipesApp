@@ -1,14 +1,26 @@
 import React from 'react';
 import { IRecipe } from '../interfaces/recipe.interface';
+import { Action } from './RecipeReducers';
+
+export interface IInitialRecipesContextContextState{
+  recipes: Array<IRecipe>;  // readonly
+}
+
+export const defaultRecipesContextState : IInitialRecipesContextContextState = {
+  recipes : new Array<IRecipe>()
+}
 
 export interface IRecipesContext{
-    recipes: IRecipe[];
-    updateRecipe: (recipe:IRecipe) => void;
+    state: IInitialRecipesContextContextState;
+    // updateRecipe: (recipe:IRecipe) => void;
+    // dispatch: (action: Action) => void;
+    dispatch: React.Dispatch<Action>;
 }
 
 export const defaultRecipesContext: IRecipesContext = {
-    recipes : new Array<IRecipe>(),
-    updateRecipe: (recipe:IRecipe) => {}
+    state : defaultRecipesContextState,
+    // updateRecipe: (recipe:IRecipe) => {},
+    dispatch: () => {}
 }
 
 export const RecipesContext = React.createContext(defaultRecipesContext);

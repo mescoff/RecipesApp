@@ -5,6 +5,13 @@ export const logInfo = (logger: string, message: string, object?: any) => {
   }
 };
 
+export const logError = (logger: string, message: string, object?: any) => {
+  if (process.env.NODE_ENV !== "production") {
+    var time = new Date().toJSON();
+    console.error(`[${time}][${logger}] ${message}`, object? object:'');
+  }
+};
+
 /**
  * Help point safely to an interface property name
  * Helps facilitate refactoring if interface props are renamed and enforce selection when need to pass property name as value

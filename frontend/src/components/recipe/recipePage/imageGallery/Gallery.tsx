@@ -13,17 +13,17 @@ interface IGalleryProps {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      width: '40vw',
+      width: '400px',
       // maxWidth: '40vw',
       maxHeight: '500px',
     },
     mainImage: {
       width: 'inherit',
-      height: '50vh',
+      height: '250px',
       // maxWidth: '50vw',
       // maxHeight: '300px',
       position: 'relative',
-      borderBottom: '2px grey groove'
+      // borderBottom: '2px grey groove'
     },
     imageSource: {
       position: 'absolute',
@@ -47,7 +47,7 @@ const useStyles = makeStyles((theme: Theme) =>
       top: 0,
       bottom: 0,
     },
-    icons: {
+    arrowIcons: {
       color: 'white',
       fontSize: 'large',
       borderRadius: '50%',
@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     smallGallery: {
       width: 'inherit',
-      height: '15vh',
+      height: '150px',
       // maxHeight: '80px',
       // padding: '1% 1% 1% 0'
       // backgroundColor: 'rgba(0, 0, 0)', 
@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-type directions = 'left'|'right';
+type directions = 'left' | 'right';
 
 const Gallery: React.FC<IGalleryProps> = (props) => {
   const styles = useStyles();
@@ -97,7 +97,7 @@ const Gallery: React.FC<IGalleryProps> = (props) => {
       // setSelectedIndex(newIndex);
       setSlideDirection(transitionDirection);
       setSlideIn(true);
-  }, 150);
+    }, 150);
   }
 
   return (
@@ -105,19 +105,19 @@ const Gallery: React.FC<IGalleryProps> = (props) => {
       <Paper className={styles.mainImage} >
         {props.medias.length > 0 &&
           <>
-          <Slide direction={slideDirection} in={slideIn} mountOnEnter unmountOnExit exit={false}>
-            <span
-              className={styles.imageSource}
-              style={{
-                backgroundImage: `url(${props.medias[selectedIndex].mediaPath})`,
-              }}
-            />
+            <Slide direction={slideDirection} in={slideIn} mountOnEnter unmountOnExit exit={false}>
+              <span
+                className={styles.imageSource}
+                style={{
+                  backgroundImage: `url(${props.medias[selectedIndex].mediaPath})`,
+                }}
+              />
             </Slide>
             <Box height={1} m={1} display='flex' justifyContent='space-between' alignItems='center'  >
-              <IconButton aria-label='Previous img' className={styles.icons} onClick={() => onSwitchImage(-1)} >
+              <IconButton aria-label='Previous img' className={styles.arrowIcons} onClick={() => onSwitchImage(-1)} >
                 <ArrowBackIosIcon name='backwardButton' />
               </IconButton>
-              <IconButton aria-label='Next img' className={styles.icons} onClick={() => onSwitchImage(1)} >
+              <IconButton aria-label='Next img' className={styles.arrowIcons} onClick={() => onSwitchImage(1)} >
                 <ArrowForwardIosIcon name='forwardButton' />
               </IconButton>
             </Box>
@@ -125,9 +125,11 @@ const Gallery: React.FC<IGalleryProps> = (props) => {
         }
       </Paper>
       {props.medias.length > 0 &&
-        <Paper className={styles.smallGallery}>
-          <Thumbnails medias={props.medias} selectedIndex={selectedIndex} />
-        </Paper>
+        // <Paper className={styles.smallGallery}>
+           <Box mt={2} width={1} height={'15vh'} display='flex' justifyContent='center'>
+            <Thumbnails medias={props.medias} selectedIndex={selectedIndex} />
+          </Box>
+        //  {/* </Paper> */}
       }
     </div>
   );

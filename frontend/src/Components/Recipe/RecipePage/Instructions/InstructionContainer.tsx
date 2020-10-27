@@ -24,6 +24,9 @@ const useStyles = makeStyles((theme: Theme) =>
         cursor: "grab"
       }
     },
+    text: {
+      fontSize: '0.5em'
+    },
     clickedStepNum: {
       color: '#377edb',
       borderWidth: '2px',
@@ -54,7 +57,7 @@ const InstructionContainer: React.FC<IInstructionContainerProps> = (props) => {
   // FIXME: Not really needed at the moment but will be useful once we start modifying more than just description for step (assigning media for example)
   const handlePrepForChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
-    props.handleChange({ stepNum: props.instruction.stepNum, description: value });
+    props.handleChange({id: props.instruction.id, stepNum: props.instruction.stepNum, description: value });
   }
 
   const onDelete = () => {
@@ -89,27 +92,33 @@ const InstructionContainer: React.FC<IInstructionContainerProps> = (props) => {
             flexDirection='row'
             justifyContent='flex-start'
             alignItems="center"
-            minWidth='50vw' 
+            // minWidth='50vw' 
+            // minWidth='400px' 
+            // width='300px'
             // overflow={false}
             className={(selected === true || snapshot.isDragging === true) ? styles.clickedButtonBase : styles.buttonBase}
           >
             {/* TODO:  border around step num should disappear if size of parent is < 40vmax */}
             <Box className={(selected === true || snapshot.isDragging === true) ? styles.clickedStepNum : ''} border={1} borderRadius='50%' maxWidth='20px' pl={1} pr={1} pt={0.5} pb={0.5} m={2}>
               {/* // TODO: for nice borders: https://www.123rf.com/visual/search/44439005 and use border-image:https://www.w3schools.com/cssref/css3_pr_border-image.asp */}
-              <Typography align='center'>{props.instruction.stepNum}</Typography>
+              <Typography align='center' variant='body2'>{props.instruction.stepNum}</Typography>
             </Box>
-            <Box minWidth='40vw' maxWidth='50vw' m={2}>
+            {/* <Box minWidth='100px' maxWidth='300px' height='30px' m={2}> */}
+            {/* <Box width='300px' maxWidth='300px' height='30px' m={2}> */}
+            <Box width={1} m={2}>
               <TextField
                 id='recipe-description'
                 label='Instruction'
                 multiline
                 variant='outlined'
+                InputProps={{ classes: { input: styles.text } }}
                 value={props.instruction.description}
                 name={props.instruction.stepNum.toString()}
                 onChange={handlePrepForChange}
                 onFocus={() => onFocus(true)}
                 onBlur={() => onFocus(false)}
                 fullWidth={true}
+
               />
             </Box>
             <IconButton aria-label='Assign picture' color='primary' onClick={onSelectImage}>

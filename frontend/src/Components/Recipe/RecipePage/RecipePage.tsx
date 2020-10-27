@@ -32,11 +32,11 @@ const RecipePage: React.FC<RecipePageProps> = props => {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const recipeContext = useContext<IRecipesContext>(RecipesContext);
 
-
   useEffect(() => {
-    if (props.recipeId && recipeContext.recipes.length > 0) {
+    logInfo(logger, `About to render recipepage. recipeId:${props.recipeId} and recipes:`, recipeContext.state.recipes);
+    if (props.recipeId && recipeContext.state.recipes.length > 0) {
       logInfo(logger, "Looking for recipe");
-      const rec = getCourseById(recipeContext.recipes, props.recipeId) || null;
+      const rec = getCourseById(recipeContext.state.recipes, props.recipeId) || null;
       if (rec === null) {
         setError("Recipe not found");
         setIsModalOpen(true);
@@ -44,7 +44,7 @@ const RecipePage: React.FC<RecipePageProps> = props => {
         setRecipe(rec);
       }
     }
-  }, [props.recipeId, recipeContext.recipes]);
+  }, [props.recipeId]);
 
   const handleToggle = () => {
     // setIsModalOpen( prev => {
@@ -59,12 +59,11 @@ const RecipePage: React.FC<RecipePageProps> = props => {
   return (
     <>
       <Box width={1} m={2}>
-        {recipe.id !== "-1" &&
+        {recipe.id !== -1 &&
           <>
             <Box display="flex" width={1} alignItems='space-around' flexWrap="wrap" m={2}>
-              <Gallery medias={recipe.medias} />
+              <Gallery medias={recipe.media} />
               <ManageRecipeForm recipe={recipe} />
-
             </Box>
             <Box display="flex" justifyContent='space-around' >
               <Box width={'50vw'}>
@@ -107,7 +106,7 @@ export const getCourseById = (
   recipes: IRecipe[],
   recipeId: string
 ): IRecipe | null => {
-  return recipes.find(recipe => recipe.id === recipeId) || null;
+  return recipes.find(recipe => recipe.id.toString() === recipeId) || null;
 };
 
 export default RecipePage;

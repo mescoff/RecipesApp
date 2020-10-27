@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { IIngredient } from '../../../../interfaces/recipe.interface';
 import { Box, Typography, Divider, makeStyles, Theme, createStyles, IconButton } from '@material-ui/core';
 import IngredientContainer from './IngredientContainer';
@@ -36,9 +36,13 @@ const useStyles = makeStyles((theme: Theme) =>
 const ManageIngredients: React.FC<{ ingredients: IIngredient[] }> = (props) => {
   // FIXME: At the moment all separate components are Managed (Ingredients, Instructions, Info) but eventually put together we'll have to move control up to common parent
   const logger = 'ManageIngredients';
-  const [tempIngredients, setIngredients] = useState<IIngredient[]>(props.ingredients);
+  const [tempIngredients, setIngredients] = useState<IIngredient[]>([]);
   const styles = useStyles();
   const units = unitsMock;
+
+  useEffect(() => {
+    setIngredients(props.ingredients);
+  }, [props.ingredients]);
 
   const handleChange = (ingredient: IIngredient) => {
     logInfo(logger, `[Update Ingredient]:`, ingredient);
@@ -72,7 +76,7 @@ const ManageIngredients: React.FC<{ ingredients: IIngredient[] }> = (props) => {
   }
 
   const onAddClicked = () => {
-    // WATCHOUT: For now we assume that when receving the ingredients we generate our own ids in order and can assume that the bottom ingredient has the highest ID. 
+    // WATCHOUT: For now we assume that when receiving the ingredients we generate our own ids in order and can assume that the bottom ingredient has the highest ID. 
     // So new id is last element's id + 1...
     const tempId = tempIngredients.length > 0 ? tempIngredients[tempIngredients.length - 1].id + 1 : 0;
     const emptyIngredient: IIngredient = { name: '', quantity: '', id: tempId, unit: units[0] }
@@ -83,9 +87,6 @@ const ManageIngredients: React.FC<{ ingredients: IIngredient[] }> = (props) => {
     ]
     setIngredients(updatedIngredients);
   }
-
-
-
 
   return (
     <Box className={styles.root} >
