@@ -17,7 +17,7 @@ export interface IRecipe {
 
 export interface ITimeInterval{
   label: TimeIntervalLabel;
-  timeValue: string;
+  timeValue: number;
   timeUnit: TimeUnit;
 }
 export enum TimeIntervalLabel{
@@ -42,8 +42,8 @@ export const defaultRecipe: IRecipe = {
   auditDate:  new Date(Date.now()),
   creationDate: new Date(Date.now()),
   timeIntervals:[
-    {label: TimeIntervalLabel.Prep, timeValue:"1", timeUnit:TimeUnit.Minutes},
-    {label: TimeIntervalLabel.Cooking, timeValue:"1", timeUnit:TimeUnit.Minutes}
+    {label: TimeIntervalLabel.Prep, timeValue:1, timeUnit:TimeUnit.Minutes},
+    {label: TimeIntervalLabel.Cooking, timeValue:1, timeUnit:TimeUnit.Minutes}
   ],
   ingredients: [],
   media: [],

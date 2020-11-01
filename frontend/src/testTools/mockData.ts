@@ -18,8 +18,8 @@ export const unitsMock: IUnit[] = [
   { id: 5, symbol: 'U', name: 'Unit' },
 ]
 export const timeIntervalMocks: ITimeInterval[] = [
-  { label: TimeIntervalLabel.Prep, timeValue: '30', timeUnit: TimeUnit.Minutes },
-  { label: TimeIntervalLabel.Cooking, timeValue: '2', timeUnit: TimeUnit.Hours },
+  { label: TimeIntervalLabel.Prep, timeValue: 30, timeUnit: TimeUnit.Minutes },
+  { label: TimeIntervalLabel.Cooking, timeValue: 2, timeUnit: TimeUnit.Hours },
 ];
 
 export const instructionsMock: IInstruction[] = [

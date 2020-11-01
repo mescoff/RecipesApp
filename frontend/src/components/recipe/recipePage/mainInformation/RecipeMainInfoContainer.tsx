@@ -1,13 +1,12 @@
 import React from 'react';
-import { Grid, Typography, makeStyles, Theme, createStyles, TextField, Box, Divider } from '@material-ui/core';
+import { Grid, Typography, makeStyles, Theme, createStyles, TextField, Box } from '@material-ui/core';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import TimePickerContainer from './TimePickerContainer';
 import { nameof } from '../../../../helpers/helpers';
-import { IRecipe, TimeUnit } from '../../../../interfaces/recipe.interface';
+import { IRecipe, TimeUnit, ITimeInterval, TimeIntervalLabel } from '../../../../interfaces/recipe.interface';
 
 export interface IRecipeFormProps {
   recipe: IRecipe;
-  // handleChange: ITimeAssignementListProps['handleChange'];
   handleGeneralChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   handleTimePickerChange: (intervalLabel: string, propertyName: string, value: string | TimeUnit) => void;
 }
@@ -41,17 +40,14 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const RecipeForm: React.FC<IRecipeFormProps> = (props) => {
+/**
+ * Container with main recipe info (titles, times, description)
+ * @param props 
+ */
+const RecipeMainInfoContainer: React.FC<IRecipeFormProps> = (props) => {
   const styles = useStyles();
   return (
     <>
-      {/* <Box display="flex">
-        <Typography variant='h5' style={{ alignSelf: 'flex-start' }}>
-          Basics
-        </Typography>
-      </Box>
-      <Divider className={styles.divider} /> */}
-
       <form className={styles.form}>
         <TextField
           size="small"
@@ -77,17 +73,9 @@ const RecipeForm: React.FC<IRecipeFormProps> = (props) => {
           <Typography className={styles.typo}>Time</Typography>
           <AccessTimeIcon className={styles.icon} />
         </Grid>
-        {props.recipe.timeIntervals !== undefined && props.recipe.timeIntervals.length > 1 &&
-        // TODO: remove eventually because time interval should never be empty...
-          <>
-            {
-              props.recipe.timeIntervals.map(interval => (
-                <TimePickerContainer key={interval.label} timeInterval={interval} handleChange={props.handleTimePickerChange} />
-              ))
-            }
-          </>
-        }
-
+        
+        <TimePickerContainersList timeIntervals={props.recipe.timeIntervals} handleTimePickerChange={props.handleTimePickerChange} />
+   
         <Grid item xs={12} sm container direction="row"  >
           <Box mt={2} width={1}>
             <TextField
@@ -108,4 +96,38 @@ const RecipeForm: React.FC<IRecipeFormProps> = (props) => {
   )
 }
 
-export default RecipeForm;
+const TimePickerContainersList: React.FC<{
+  timeIntervals: ITimeInterval[], handleTimePickerChange: (intervalLabel: string, propertyName: string, value: string | TimeUnit) => void;
+}> = (props) => {
+  const logger = "TimePickerContainersList";
+  const list = (
+    <>
+      {
+        props.timeIntervals.map(interval => (
+          <TimePickerContainer key={interval.label} timeInterval={interval} handleChange={props.handleTimePickerChange} />
+        ))
+      }
+    </>
+  );
+  return list;
+}
+
+    // <>
+    //   {
+    //     Object.keys(TimeIntervalLabel).map(enumKey => {
+    //       // logInfo(logger, `enumKey is ${enumKey} and type is ${typeof (enumKey)}`);
+    //       // find corresponding interval, otherwise return empty interval
+    //       const matchingTimeIntervalInRecipe = props.timeIntervals !== undefined ? props.timeIntervals.find(t => t.label === enumKey) : undefined;
+    //       // logInfo(logger, `matchingTimeIntervalInRecipe: `, matchingTimeIntervalInRecipe);
+    //       const timeInterval: ITimeInterval = matchingTimeIntervalInRecipe !== undefined ? matchingTimeIntervalInRecipe[0] : { label: enumKey, timeValue: 0, timeUnit: TimeUnit.Minutes };
+    //       // logInfo(logger, `Final TImeInterval is: `, timeInterval);
+    //       return (
+    //         <TimePickerContainer key={enumKey} timeInterval={timeInterval} handleChange={props.handleTimePickerChange} />
+    //       )
+    //     })
+    //   }
+    // </>
+
+
+
+export default RecipeMainInfoContainer;

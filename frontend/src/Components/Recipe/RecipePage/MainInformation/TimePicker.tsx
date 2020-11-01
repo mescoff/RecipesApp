@@ -89,7 +89,7 @@ const TimePicker: React.FC<ITimePickerContainerProps> = (props) => {
       const value: string = event.target.value as string;
       // TimeInterval Property to update
       const intervalProperty = event.target.name;
-      logInfo(logger, `onUpdateSelect: value:${value} prop:${intervalProperty}`);
+      logInfo(logger, `onUpdateSelect: label:${props.timeInterval.label}  value:${value} prop:${intervalProperty}`);
       props.handleChange(props.timeInterval.label, intervalProperty, value);
     }
   }

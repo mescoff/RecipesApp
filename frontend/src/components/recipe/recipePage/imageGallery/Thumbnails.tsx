@@ -65,7 +65,7 @@ const Thumbnails: React.FC<IThumbnailsProps> = (props) => {
           }
           else return (
             <span
-              key={media.mediaPath}
+              key={media.id}
               className={styles.galleryThumbnail}
               style={{
                 backgroundImage: `url(${media.mediaPath})`,

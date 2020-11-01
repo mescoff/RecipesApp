@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme: Theme) =>
       flexDirection: "column"
     },
     divider: {
-      marginBottom: '8vh'
+      marginBottom: '4vh'
     }
   })
 );

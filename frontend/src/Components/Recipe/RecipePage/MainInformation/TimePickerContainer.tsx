@@ -2,7 +2,7 @@ import React from 'react';
 import { ITimeInterval } from '../../../../interfaces/recipe.interface';
 import { Grid, Divider, Typography, makeStyles, Theme, createStyles } from '@material-ui/core';
 import TimePicker from './TimePicker';
-import { IRecipeFormProps } from './RecipeForm';
+import { IRecipeFormProps } from './RecipeMainInfoContainer';
 
 export interface ITimePickerContainerProps {
   timeInterval: ITimeInterval;

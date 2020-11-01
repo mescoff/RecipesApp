@@ -84,7 +84,7 @@ const IngredientContainer: React.FC<IIngredientContainerProps> = (props) => {
       flexDirection='row'
       justifyContent='flex-start'
       alignItems="center"
-      m={2}>
+      m={1}>
       <TextField
         className={styles.qttyField}
         label='qty'

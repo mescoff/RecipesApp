@@ -40,7 +40,7 @@ const RecipesGlobalPage: React.FC<RouteComponentProps> = () => {
       >
         <RecipeList recipes={recipesContext.state.recipes} />
       </Box>
-      : <Box display="flex" justifyContent="center">
+      : <Box display="flex" justifyContent="center" marginTop={'20vh'}>
         <CircularProgress />
       </Box>
     }

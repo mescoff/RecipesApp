@@ -99,7 +99,7 @@ const InstructionContainer: React.FC<IInstructionContainerProps> = (props) => {
             className={(selected === true || snapshot.isDragging === true) ? styles.clickedButtonBase : styles.buttonBase}
           >
             {/* TODO:  border around step num should disappear if size of parent is < 40vmax */}
-            <Box className={(selected === true || snapshot.isDragging === true) ? styles.clickedStepNum : ''} border={1} borderRadius='50%' maxWidth='20px' pl={1} pr={1} pt={0.5} pb={0.5} m={2}>
+            <Box className={(selected === true || snapshot.isDragging === true) ? styles.clickedStepNum : ''} border={"1px blue dashed"} borderRadius='50%' maxWidth='20px' pl={1} pr={1} pt={0.5} pb={0.5} m={2}>
               {/* // TODO: for nice borders: https://www.123rf.com/visual/search/44439005 and use border-image:https://www.w3schools.com/cssref/css3_pr_border-image.asp */}
               <Typography align='center' variant='body2'>{props.instruction.stepNum}</Typography>
             </Box>

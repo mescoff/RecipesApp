@@ -5,6 +5,7 @@ import { recipeMock1 } from "../testTools/mockData";
 import { recipesReducer } from "./RecipeReducers";
 import * as ApiService from "../services/apiCall.service";
 import { logInfo, logError } from "../helpers/helpers";
+import { formatRecipe } from "../helpers/format";
 
 export const TestData = (): IRecipe[] => {
     const res = new Array<IRecipe>();
@@ -27,12 +28,14 @@ class RecipesProvider extends React.Component<IRecipesContext> {
      //https://localhost:44319/api/Recipes/3
      try{
       const recipe = await ApiService.Get("https://localhost:44319/api/","Recipes/3");
+      const formattedRecipe : IRecipe = formatRecipe(recipe);
       // const recipe = result.data;
       logInfo("RecipeProvider","Provider loading recipe: ", recipe);
+      logInfo("RecipeProvider","Formatted recipe: ", formattedRecipe);
       this.setState( {
         state: {
           ...this.state.state,
-          recipes: [recipe]
+          recipes: [formattedRecipe]
         }
       })
      } catch (error){

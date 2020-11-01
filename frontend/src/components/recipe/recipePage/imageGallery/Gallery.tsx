@@ -13,13 +13,13 @@ interface IGalleryProps {
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      width: '400px',
+      width: '600px',
       // maxWidth: '40vw',
-      maxHeight: '500px',
+      maxHeight: '700px',
     },
     mainImage: {
       width: 'inherit',
-      height: '250px',
+      height: '400px',
       // maxWidth: '50vw',
       // maxHeight: '300px',
       position: 'relative',
@@ -113,7 +113,7 @@ const Gallery: React.FC<IGalleryProps> = (props) => {
                 }}
               />
             </Slide>
-            <Box height={1} m={1} display='flex' justifyContent='space-between' alignItems='center'  >
+            <Box height={1} display='flex' justifyContent='space-between' alignItems='center'  >
               <IconButton aria-label='Previous img' className={styles.arrowIcons} onClick={() => onSwitchImage(-1)} >
                 <ArrowBackIosIcon name='backwardButton' />
               </IconButton>
