@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { IInstruction } from '../../../../interfaces/recipe.interface';
-import InstructionContainer from './InstructionContainer';
+import InstructionModifiable from './InstructionModifiable';
 import { Box, Typography, IconButton, Divider, makeStyles, Theme, createStyles } from '@material-ui/core';
 import { logInfo } from '../../../../helpers/helpers';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
@@ -117,7 +117,7 @@ const ManageInstructions: React.FC<{ instructions: IInstruction[] }> = (props) =
       <Divider className={styles.divider} />
       <Box display="flex" flexDirection="column" >
         {tempInstructions.map((instruction, index) => (
-          <InstructionContainer key={`instruction_${instruction.stepNum}`} instructionIndex={index} instruction={instruction} handleChange={handleChange} handleDelete={handleDelete} />
+          <InstructionModifiable key={`instruction_${instruction.stepNum}`} instructionIndex={index} instruction={instruction} handleChange={handleChange} handleDelete={handleDelete} />
         ))
         }
       </Box>

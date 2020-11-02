@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { IInstruction } from '../../../../interfaces/recipe.interface';
-import InstructionContainer from './InstructionContainer';
+import InstructionModifiable from './InstructionModifiable';
 import { Box, Typography, IconButton, Divider, makeStyles, Theme, createStyles } from '@material-ui/core';
 import { logInfo } from '../../../../helpers/helpers';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
@@ -114,7 +114,7 @@ const ManageInstructionsDraggable: React.FC<{ instructions: IInstruction[] }> = 
               ref={provided.innerRef}
             >
               {tempInstructions.map((instruction, index) => (
-                <InstructionContainer
+                <InstructionModifiable
                   key={`instruction_${instruction.stepNum}`}
                   instructionIndex={index}
                   instruction={instruction}

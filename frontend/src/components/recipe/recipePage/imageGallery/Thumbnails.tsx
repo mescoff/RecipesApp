@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles, Theme, createStyles, Box } from '@material-ui/core';
+import { makeStyles, Theme, createStyles } from '@material-ui/core';
 import { IMedia } from '../../../../interfaces/recipe.interface';
 
 const useStyles = makeStyles((theme: Theme) =>

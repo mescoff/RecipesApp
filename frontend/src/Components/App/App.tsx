@@ -8,8 +8,8 @@ import DeliveryNote from "../../fonts/DeliveryNote.otf";
 import Main from "./Main";
 import NoMatch from "../common/NoMatch";
 import React from "react";
-import RecipeModifiationPage from "../recipe/recipePage/RecipeModificationPage";
 import RecipesProvider from "../../contexts/RecipesProvider";
+import { RecipePageContainer } from "../recipe/recipePage/RecipePageContainer";
 
 const theme = createMuiTheme({
   typography: {
@@ -52,7 +52,7 @@ const App: React.FC = () => {
           <Main>
             <Router>
               <RecipesGlobalPage path="/recipes" />
-              <RecipeModifiationPage path="/recipes/:recipeId" />
+              <RecipePageContainer path="/recipes/:recipeId" />
               <Redirect noThrow from="/" to="/recipes" />
               <NoMatch default />
             </Router>

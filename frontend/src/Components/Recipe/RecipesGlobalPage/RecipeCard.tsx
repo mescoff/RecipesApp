@@ -15,6 +15,7 @@ import { IRecipe } from "../../../interfaces/recipe.interface";
 import { IManageRecipeProps } from "./ManageRecipeCard";
 import { Link } from "@reach/router";
 import { useLocation } from "react-router";
+import { logInfo } from "../../../helpers/helpers";
 
 // export interface IRecipe {
 //     img_link: string;
@@ -45,9 +46,12 @@ const RecipeCard = (props: IRecipeCardProps & IManageRecipeProps) => {
   const { id, media, titleShort, description } = props.recipe;
   const classes = useStyles();
   const location = useLocation();
+  logInfo("RecipeCard", `Location is :`, location);
   return (
     <Box width="20%" height="20%">
-      <Link to={`${location.pathname}/${id}`} style={{ textDecoration: "none" }}>
+      {/* TODO: fix how we use location.pathname here. Bug when manually going to not existant id in url, heading back to home and then clicking on card */}
+      <Link to={`/recipes/${id}`} style={{ textDecoration: "none" }}> 
+      {/* <Link to={`${location.pathname}/${id}`} style={{ textDecoration: "none" }}> */}
         <Box m={2}>
           <Card
           // onMouseOut={props.onHover}

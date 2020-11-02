@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 
-const IngredientContainer: React.FC<IIngredientContainerProps> = (props) => {
+const IngredientModifiable: React.FC<IIngredientContainerProps> = (props) => {
   const logger = "IngredientContainer";
   const styles = useStyles();
 
@@ -132,4 +132,4 @@ const IngredientContainer: React.FC<IIngredientContainerProps> = (props) => {
   );
 }
 
-export default IngredientContainer;
+export default IngredientModifiable;

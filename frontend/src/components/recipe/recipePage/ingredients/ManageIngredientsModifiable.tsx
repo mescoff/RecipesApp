@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { IIngredient } from '../../../../interfaces/recipe.interface';
 import { Box, Typography, Divider, makeStyles, Theme, createStyles, IconButton } from '@material-ui/core';
-import IngredientContainer from './IngredientContainer';
+import IngredientModifiable from './IngredientModifiable';
 import { unitsMock } from '../../../../testTools/mockData';
 import { logInfo } from '../../../../helpers/helpers';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 
 
-const useStyles = makeStyles((theme: Theme) =>
+export const useIngredientsStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       width: '100%',
@@ -33,12 +33,12 @@ const useStyles = makeStyles((theme: Theme) =>
  * Container for ingredients
  * @param props : { ingredients: IIngredient[] }
  */
-const ManageIngredients: React.FC<{ ingredients: IIngredient[] }> = (props) => {
+const ManageIngredientsModifiable: React.FC<{ ingredients: IIngredient[] }> = (props) => {
   // FIXME: At the moment all separate components are Managed (Ingredients, Instructions, Info) but eventually put together we'll have to move control up to common parent
   const logger = 'ManageIngredients';
   const [tempIngredients, setIngredients] = useState<IIngredient[]>([]);
-  const styles = useStyles();
-  const units = unitsMock;
+  const styles = useIngredientsStyles();
+  const units = unitsMock; // TODO: Units should come from API and be centralized in context
 
   useEffect(() => {
     setIngredients(props.ingredients);
@@ -102,7 +102,7 @@ const ManageIngredients: React.FC<{ ingredients: IIngredient[] }> = (props) => {
       <Box display="flex" flexDirection="column" >
         {
           tempIngredients.map(i => (
-            <IngredientContainer key={i.id} ingredient={i} units={units} handleChange={handleChange} handleDelete={handleDelete}/>
+            <IngredientModifiable key={i.id} ingredient={i} units={units} handleChange={handleChange} handleDelete={handleDelete}/>
           ))
         }
       </Box>
@@ -110,4 +110,4 @@ const ManageIngredients: React.FC<{ ingredients: IIngredient[] }> = (props) => {
   )
 }
 
-export default ManageIngredients;
+export default ManageIngredientsModifiable;

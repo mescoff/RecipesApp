@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { IRecipe, TimeUnit } from "../../../../interfaces/recipe.interface";
 import { logInfo } from "../../../../helpers/helpers";
-import RecipeMainInfoContainer from "./RecipeMainInfoContainer";
+import RecipeMainInfoContainerModifiable from "./RecipeMainInfoContainerModifiable";
 import { Box } from "@material-ui/core";
 
 export interface IManageRecipeFormProps {
@@ -9,7 +9,7 @@ export interface IManageRecipeFormProps {
 }
 
 
-const ManageRecipeForm: React.FC<IManageRecipeFormProps> = props => {
+const ManageRecipeMainInfoContainer: React.FC<IManageRecipeFormProps> = props => {
   const logger = "ManageRecipeForm";
   const [tempRecipe, setTempRecipe] = useState<IRecipe>({...props.recipe});
 
@@ -64,9 +64,9 @@ const ManageRecipeForm: React.FC<IManageRecipeFormProps> = props => {
 
   return (
     <Box ml={3}>
-      <RecipeMainInfoContainer recipe={tempRecipe} handleGeneralChange={handleGeneralChange} handleTimePickerChange={handleTimePickerUpdate} />
+      <RecipeMainInfoContainerModifiable recipe={tempRecipe} handleGeneralChange={handleGeneralChange} handleTimePickerChange={handleTimePickerUpdate} />
     </Box>
   );
 };
 
-export default ManageRecipeForm;
+export default ManageRecipeMainInfoContainer;

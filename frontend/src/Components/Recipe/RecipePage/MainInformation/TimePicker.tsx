@@ -1,9 +1,9 @@
 import React, { ChangeEvent, useState } from 'react';
-import { Grid, TextField, FormControl, Select, MenuItem, Tooltip } from '@material-ui/core';
+import { Grid, TextField, FormControl, Select, MenuItem, Tooltip, Box } from '@material-ui/core';
 import { TimeUnit, ITimeInterval } from '../../../../interfaces/recipe.interface';
 import { logInfo, nameof } from '../../../../helpers/helpers';
 import Validate, { IValidationStatus } from '../../../../helpers/validate';
-import { ITimePickerContainerProps } from './TimePickerContainer';
+import { IRecipeMainInfoContainerProps } from './RecipeMainInfoContainerModifiable';
 
 // TODO: useful for getting styles of Material-ui inputs and selects
 // const BootstrapInput = withStyles((theme: Theme) =>
@@ -43,6 +43,13 @@ import { ITimePickerContainerProps } from './TimePickerContainer';
 //   }),
 // )(InputBase);
 
+
+export interface ITimePickerContainerProps {
+  timeInterval: ITimeInterval;
+  // handleChange: ITimeAssignementListProps['handleChange'];
+  handleChange: IRecipeMainInfoContainerProps["handleTimePickerChange"];
+}
+
 /**
  * Time Picker component: update recipe's time intervals.  
  * One input for quantity, one dropdown for unit 
@@ -71,6 +78,10 @@ const TimePicker: React.FC<ITimePickerContainerProps> = (props) => {
       props.handleChange(props.timeInterval.label, intervalProperty, value);
     }
     else {
+      // else if input length is greater than 3 characters prevent from inputing more
+      if (value.length >= 3){
+        return;
+      }
       // else validate input
       const validation = Validate.validateDigit(value, 60);
       setTextFieldValidation(validation);
@@ -95,43 +106,43 @@ const TimePicker: React.FC<ITimePickerContainerProps> = (props) => {
   }
 
   return (
-    <>
-        <Grid item xs={2}>
-          <Tooltip open={!textFieldValidation.isValid} title={textFieldValidation.errorMessage ?? ''} >
-            <TextField
-              id={`timeValue-${props.timeInterval.label}`}
-              size="small"
-              variant="outlined"
-              name={nameof<ITimeInterval>("timeValue")}
-              value={props.timeInterval.timeValue}
-              onChange={onUpdateTextField}
-              error={!textFieldValidation.isValid}
-            />
-          </Tooltip>
-        </Grid>
-        <Grid item xs={4}>
-          <FormControl variant="outlined" size="small" fullWidth={true}>
-            <Select
-              id="timeunit-select"
-              value={props.timeInterval.timeUnit}
-              name={nameof<ITimeInterval>("timeUnit")}
-              onChange={onUpdateSelect}
-              style={{width:'8vw'}}
-            >
-              {Object.keys(TimeUnit).map(
-                key => {
-                  const val = TimeUnit[key];
-                  return (
-                    <MenuItem key={key} value={val}>
-                      {val}
-                    </MenuItem>
-                  )
-                }
-              )}
-            </Select>
-          </FormControl>
-        </Grid>
-    </>
+    <Box width={1} display="flex" alignContent="center">
+      <Box marginRight={2} width="20%">
+        <Tooltip open={!textFieldValidation.isValid} title={textFieldValidation.errorMessage ?? ''} >
+          <TextField
+            id={`timeValue-${props.timeInterval.label}`}
+            size="small"
+            variant="outlined"
+            name={nameof<ITimeInterval>("timeValue")}
+            value={props.timeInterval.timeValue}
+            onChange={onUpdateTextField}
+            error={!textFieldValidation.isValid}
+          />
+        </Tooltip>
+      </Box>
+      <Box>
+        <FormControl variant="outlined" size="small" fullWidth={true}>
+          <Select
+            id="timeunit-select"
+            value={props.timeInterval.timeUnit}
+            name={nameof<ITimeInterval>("timeUnit")}
+            onChange={onUpdateSelect}
+            style={{ width: '95px' }}
+          >
+            {Object.keys(TimeUnit).map(
+              key => {
+                const val = TimeUnit[key];
+                return (
+                  <MenuItem key={key} value={val}>
+                    {val}
+                  </MenuItem>
+                )
+              }
+            )}
+          </Select>
+        </FormControl>
+      </Box>
+    </Box>
   );
 }
 

@@ -1,18 +1,18 @@
 import React from "react";
 import { Story, Meta } from "@storybook/react/types-6-0";
-import ManageRecipeForm, { IManageRecipeFormProps } from "../components/recipe/recipePage/mainInformation/ManageRecipeForm";
+import ManageRecipeMainInfoContainer, { IManageRecipeFormProps } from "../components/recipe/recipePage/mainInformation/ManageRecipeMainInfoContainer";
 import { recipeMock1 } from "../testTools/mockData";
 
 export default {
-    title: "Example/ManageRecipeForm",
-    component: ManageRecipeForm
+    title: "Example/ManageRecipeInfo",
+    component: ManageRecipeMainInfoContainer
     // argTypes: {
     //   backgroundColor: { control: 'color' },
     // },
 } as Meta;
 
 const Template: Story<IManageRecipeFormProps> = args => (
-    <ManageRecipeForm {...args} />
+    <ManageRecipeMainInfoContainer {...args} />
 );
 
 export const Basic = Template.bind({});

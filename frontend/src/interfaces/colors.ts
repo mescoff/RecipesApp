@@ -1,0 +1,1 @@
+export const MAINTHEME = "#319b54";

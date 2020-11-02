@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme: Theme) =>
  * Container for instructions (step and description)
  * @param props : IInstructionContainerProps
  */
-const InstructionContainer: React.FC<IInstructionContainerProps> = (props) => {
+const InstructionModifiable: React.FC<IInstructionContainerProps> = (props) => {
   const styles = useStyles();
   const [selected, setSelected] = useState<boolean>(false);
 
@@ -138,4 +138,4 @@ const InstructionContainer: React.FC<IInstructionContainerProps> = (props) => {
   )
 }
 
-export default InstructionContainer;
+export default InstructionModifiable;

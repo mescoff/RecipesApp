@@ -16,11 +16,13 @@ const useStyles = makeStyles({
     height: "13vh",
     opacity: 0.6
   },
-  details: {
-    fontFamily: "DeliveryNote"
+  recipeTitle:{
+     color: "rgba(255,255,255,1)", 
+    fontSize: '3em', 
+    fontFamily: "Comic Sans MS,DeliveryNote,Segoe UI,Roboto"
   },
   recipeLogo:{
-    width: "50px", height: "50px", marginRight: "10px", display: 'inline', padding: '6px', border: '3px white dashed', borderRadius: 20
+    width: "50px", height: "50px", marginRight: "10px", display: 'inline', padding: '6px', border: '5px rgba(255,255,255,0.5) solid', borderRadius: "50% 20% / 10% 40%"
   }
   // typo:{
   //   fontWeight: '2em',
@@ -50,7 +52,7 @@ const HeaderBar = () => {
            className={styles.recipeLogo}
           />
           <Typography
-            style={{ color: "white", fontSize: '3em' }}
+            className={styles.recipeTitle}
             color="inherit"
             variant="h2"
             display="inline"
