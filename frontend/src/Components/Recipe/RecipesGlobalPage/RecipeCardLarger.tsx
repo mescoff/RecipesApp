@@ -47,7 +47,7 @@ export const RecipeLarger = (props: IRecipeCardProps & IManageRecipeProps ) => {
         <CardMedia
           // className="media"
           className={classes.picture}
-          image={medias[0].mediaPath}
+          image={medias[0].mediaUrl}
           title={titleShort}
         />
         <div className={classes.details}>

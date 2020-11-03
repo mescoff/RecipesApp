@@ -59,7 +59,7 @@ const RecipeCard = (props: IRecipeCardProps & IManageRecipeProps) => {
             {/* <CardActionArea> */}
             <CardMedia
               className={classes.picture}
-              image={media[0].mediaPath}
+              image={media[0].mediaUrl}
               title={titleShort}
             />
             <CardContent>

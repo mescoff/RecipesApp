@@ -3,8 +3,8 @@ import { IRecipe } from '../../../interfaces/recipe.interface';
 import { RecipeMainInfoContainerStatic } from './mainInformation/RecipeMainInfoContainerStatic';
 import { Box } from '@material-ui/core';
 import Gallery from './imageGallery/Gallery';
-import { IngredientsStatic } from './ingredients/IngredientsStatic';
 import { InstructionsStatic } from './instructions/InstructionsStatic';
+import { IngredientsStatic } from './ingredients/IngredientsStatic';
 
 export const RecipePageStatic: React.FC<{ recipe: IRecipe }> = (props) => {
   return (

@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core';
 import { IMedia } from '../../../../interfaces/recipe.interface';
+import { logInfo } from '../../../../helpers/helpers';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -44,6 +45,7 @@ interface IThumbnailsProps {
 
 // Otherwise there is : https://www.npmjs.com/package/react-alice-carousel 
 const Thumbnails: React.FC<IThumbnailsProps> = (props) => {
+  logInfo("Thumbnails", "Rendering");
   const styles = useStyles();
   return (
     // <Box height={1} display='flex' justifyContent='flex-start' alignItems='center'>
@@ -54,10 +56,10 @@ const Thumbnails: React.FC<IThumbnailsProps> = (props) => {
           if (index === props.selectedIndex) {
             return (
               <span
-                key={media.mediaPath}
+                key={media.id}
                 className={styles.galleryThumbnail}
                 style={{
-                  backgroundImage: `url(${media.mediaPath})`,
+                  backgroundImage: `url(${media.mediaUrl})`,
                 }}
               />
               // <img key={media.mediaPath} className={styles.galleryThumbnail} src={media.mediaPath} alt={media.title} />
@@ -68,7 +70,7 @@ const Thumbnails: React.FC<IThumbnailsProps> = (props) => {
               key={media.id}
               className={styles.galleryThumbnail}
               style={{
-                backgroundImage: `url(${media.mediaPath})`,
+                backgroundImage: `url(${media.mediaUrl})`,
                 opacity: 0.5
               }}
             />
@@ -76,7 +78,7 @@ const Thumbnails: React.FC<IThumbnailsProps> = (props) => {
           )
         })
       }
-      </>
+    </>
     // </Box>
   );
 }

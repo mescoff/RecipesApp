@@ -60,7 +60,7 @@ export interface IIngredient {
 
 export interface IMedia {
   id: number;
-  mediaPath: string;
+  mediaUrl: string;
   title: string;
   tag: string;
 }

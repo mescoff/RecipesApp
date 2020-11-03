@@ -38,9 +38,9 @@ export const ingredientsMock: IIngredient[] = [
 ]
 
 export const mediasMock: IMedia[] = [
-  { id: 1, mediaPath: img1, tag: 'picture', title: 'img1' },
-  { id: 2, mediaPath: img2, tag: 'picture', title: 'img2' },
-  { id: 3, mediaPath: img3, tag: 'picture', title: 'img3' },
+  { id: 1, mediaUrl: img1, tag: 'picture', title: 'img1' },
+  { id: 2, mediaUrl: img2, tag: 'picture', title: 'img2' },
+  { id: 3, mediaUrl: img3, tag: 'picture', title: 'img3' },
 ];
 
 export const recipeMock1: IRecipe = {

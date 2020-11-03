@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import { IMedia } from '../../../../interfaces/recipe.interface';
@@ -73,12 +73,22 @@ type directions = 'left' | 'right';
 const Gallery: React.FC<IGalleryProps> = (props) => {
   const styles = useStyles();
   const [selectedIndex, setSelectedIndex] = useState<number>(0);
+  // const [selectedImageUrl, setSelectedImageUrl] = useState<string>('');
   const [slideIn, setSlideIn] = useState<boolean>(true);
   const [slideDirection, setSlideDirection] = useState<directions>('left');
 
   // useEffect(() => {
   //   setTransitionImg(false);
   // }, [transitionImg])
+
+  // useEffect(() => {
+  //   if (props.medias.length > 0) {
+  //     var imgBytes = props.medias[selectedIndex].mediaUrl;
+  //     var blob = new Blob([imgBytes], { type: "image/jpeg" });
+  //     var imageUrl = URL.createObjectURL(blob);
+  //     setSelectedImageUrl(imageUrl);
+  //   }
+  // }, [selectedIndex])
 
   const onSwitchImage = (movingIndexBy: number) => {
     let newIndex = selectedIndex + movingIndexBy;
@@ -109,7 +119,7 @@ const Gallery: React.FC<IGalleryProps> = (props) => {
               <span
                 className={styles.imageSource}
                 style={{
-                  backgroundImage: `url(${props.medias[selectedIndex].mediaPath})`,
+                  backgroundImage: `url(${props.medias[selectedIndex].mediaUrl})`,         
                 }}
               />
             </Slide>
@@ -126,9 +136,9 @@ const Gallery: React.FC<IGalleryProps> = (props) => {
       </Paper>
       {props.medias.length > 0 &&
         // <Paper className={styles.smallGallery}>
-           <Box mt={2} width={1} height={'15vh'} display='flex' justifyContent='center'>
-            <Thumbnails medias={props.medias} selectedIndex={selectedIndex} />
-          </Box>
+        <Box mt={2} width={1} height={'15vh'} display='flex' justifyContent='center'>
+          <Thumbnails medias={props.medias} selectedIndex={selectedIndex} />
+        </Box>
         //  {/* </Paper> */}
       }
     </div>
